@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2021 at 02:16 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Jan 29, 2025 at 02:54 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blackexpo_company`
+-- Database: `company`
 --
 
 -- --------------------------------------------------------
@@ -30,18 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `agenda` (
   `id_agenda` int(5) NOT NULL,
-  `tema` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `tema_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `isi_agenda` text COLLATE latin1_general_ci NOT NULL,
-  `tempat` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `pengirim` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `tema` varchar(100) NOT NULL,
+  `tema_seo` varchar(100) NOT NULL,
+  `isi_agenda` text NOT NULL,
+  `tempat` varchar(100) NOT NULL,
+  `pengirim` varchar(100) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
   `tgl_mulai` date NOT NULL,
   `tgl_selesai` date NOT NULL,
   `tgl_posting` date NOT NULL,
-  `jam` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `dibaca` int(5) NOT NULL DEFAULT '1',
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL
+  `jam` varchar(50) NOT NULL,
+  `dibaca` int(5) NOT NULL DEFAULT 1,
+  `username` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -61,16 +60,16 @@ INSERT INTO `agenda` (`id_agenda`, `tema`, `tema_seo`, `isi_agenda`, `tempat`, `
 
 CREATE TABLE `album` (
   `id_album` int(5) NOT NULL,
-  `jdl_album` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `album_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `keterangan` text COLLATE latin1_general_ci NOT NULL,
-  `gbr_album` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
-  `hits_album` int(5) NOT NULL DEFAULT '1',
+  `jdl_album` varchar(100) NOT NULL,
+  `album_seo` varchar(100) NOT NULL,
+  `keterangan` text NOT NULL,
+  `gbr_album` varchar(100) NOT NULL,
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
+  `hits_album` int(5) NOT NULL DEFAULT 1,
   `tgl_posting` date NOT NULL,
   `jam` time NOT NULL,
-  `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL
+  `hari` varchar(20) NOT NULL,
+  `username` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -89,14 +88,14 @@ INSERT INTO `album` (`id_album`, `jdl_album`, `album_seo`, `keterangan`, `gbr_al
 CREATE TABLE `background` (
   `id_background` int(5) NOT NULL,
   `gambar` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `background`
 --
 
 INSERT INTO `background` (`id_background`, `gambar`) VALUES
-(1, 'toska');
+(1, 'white');
 
 -- --------------------------------------------------------
 
@@ -106,9 +105,9 @@ INSERT INTO `background` (`id_background`, `gambar`) VALUES
 
 CREATE TABLE `banner` (
   `id_banner` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -133,23 +132,23 @@ INSERT INTO `banner` (`id_banner`, `judul`, `url`, `gambar`, `tgl_posting`) VALU
 CREATE TABLE `berita` (
   `id_berita` int(5) NOT NULL,
   `id_kategori` int(5) NOT NULL,
-  `username` varchar(30) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(30) NOT NULL,
   `judul` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `sub_judul` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `youtube` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `youtube` varchar(100) NOT NULL,
   `judul_seo` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `headline` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N',
-  `utama` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
+  `headline` enum('Y','N') NOT NULL DEFAULT 'Y',
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'N',
+  `utama` enum('Y','N') NOT NULL DEFAULT 'Y',
   `isi_berita` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `keterangan_gambar` text COLLATE latin1_general_ci NOT NULL,
-  `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  `keterangan_gambar` text NOT NULL,
+  `hari` varchar(20) NOT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `dibaca` int(5) NOT NULL DEFAULT '1',
-  `tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `status` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
+  `gambar` varchar(100) NOT NULL,
+  `dibaca` int(5) NOT NULL DEFAULT 1,
+  `tag` varchar(100) NOT NULL,
+  `status` enum('Y','N') NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -213,7 +212,7 @@ INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judu
 (659, 39, 'admin', 'Target-Target Serangan Israel di Gaza', '', '', 'targettarget-serangan-israel-di-gaza', 'N', 'Y', 'Y', '<p><strong>GAZA</strong>&nbsp;- Israel makin gencar melakukan serangan ke Gaza, baik melalui udara maupun darat. Masjid menjadi salah satu target serangan dari Negara Yahudi itu.<br />\r\n<br />\r\nSekira 15 warga Palestina dilaporkan tewas dan 20 lainnya dalam serangan udara Isarel ke sebuah masjid di Kota Gaza pada Sabtu 19 Juli 2014 lalu. Masjid itu terletak tidak jauh dari rumah milik Komandan Polisi Gaza.<br />\r\n<br />\r\nRudal-rudal dari Israel menghancurkan sebagian dari bangunan masjid. Alquran yang berada di dalam masjid pun tampak rusak akibat serangan. Demikian diberitakan&nbsp;<em>Associated Press</em>, Rabu (23/7/2014).<br />\r\n<br />\r\nSelain itu, serangan Israel juga diarahkan ke rumah sakit yang berada di Gaza. Blokade yang dilakukan oleh Israel makin membuat rumah sakit sulit untuk beroperasi.<br />\r\n<br />\r\nKementerian Kesehatan Gaza menjelaskan, blokade telah memperburuk kualitas hidup warga yang terluka akibat konflik ini. 136 obat yang diperlukan sudah makin menipis dan diperkirakan akan habis dalam waktu beberapa hari ke depan.<br />\r\n<br />\r\nKantung kekuatan Hamas menjadi target penting yang diincar oleh Israel. Namun serangan terhadap basis kekuatan Hamas tersebut justru lebih sering menimpa warga sipil.<br />\r\n<br />\r\nHingga saat ini lebih dari 630 warga Palestina dilaporkan tewas dalam serangan yang dilakukan Israel ke Gaza. Sementara 30 warga Israel dilakukan turut tewas dalam pertempuran yang sudah berlangsung sekira 15 hari tersebut.</p>\r\n', '', 'Minggu', '2018-04-22', '11:14:45', 'target_israel.jpg', 5, 'yahudi,israel,palestina', 'Y'),
 (660, 39, 'admin', 'Hamas Sebut Perdana Mentri Israel Kejam Sama seperti Hitler', '', '', 'hamas-sebut-perdana-mentri-israel-kejam-sama-seperti-hitler', 'N', 'Y', 'Y', '<p><strong>GAZA&nbsp;</strong>- Pernyataan keras disampaikan Hamas kepada Israel. Faksi garis keras Palestina ini menyamakan Perdana Menteri (PM) Israel, Benjamin Netanyahu dengan pemimpin Nazi, Adolf Hitler.<br />\r\n<br />\r\nCercaan Hamas ini disampaikan oleh Juru Bicaranya Osama Hamdan. Menurut Hamdan, pernyataan ini muncul akibat&nbsp; yang dilakukan Israel kepada warga Gaza, sama persis dengan pembantaian warga Yahudi oleh Hitler.<br />\r\n<br />\r\n&quot;PM Israel sudah kehilangan moral dia adalah cerminan dari Hitler dan tentara Nazi,&quot; sebut Hamdan, seperti dikutip dari&nbsp;<em>Times of Israel</em>, Rabu (23/7/2014).<br />\r\n<br />\r\n&quot;Pasukan Israel juga berlaku sama (dengan tentara Nazi) mereka disuruh membunuh warga Palestina jika, ini sama saja dengan yang dilakukan Hitler di abad lalu,&quot; tambah dia.<br />\r\n<br />\r\nPernyataan Hamdan disampaikannya bukan tanpa alasan. Setelah Israel melancarkan agresi ke Gaza, hampir 600 warga Palestina menjadi korban jiwa kekejaman Israel.<br />\r\n<br />\r\nParahnya lagi, korban jiwa dari Palestina kebanyakan adalah bocah dan perempuan. Hal tersebut bertentangan dengan pernyataan PM Israel yang mengatakan, serangan ke Gaza ditujukan untuk menghancurkan Hamas.</p>\r\n', '', 'Minggu', '2018-04-22', '11:13:58', 'hamas.jpg', 2, 'yahudi', 'Y'),
 (661, 39, 'admin', 'Banyak Gereja yang Tampung Pengungsi Muslim Palestina', '', '', 'banyak-gereja-yang-tampung-pengungsi-muslim-palestina', 'N', 'Y', 'Y', '<p><strong>GAZA&nbsp;</strong>- Agresi Israel di Gaza meninggalkan duka mendalam bagi warga Palestina. Tidak hanya kehilangan nyawa, warga Palestina yang selamat harus tega melihat rumah mereka porak poranda dihancurkan Israel.<br />\r\n<br />\r\nPenduduk Palestina pun saat ini&nbsp; tinggal di tempat-tempat penampungan sementara. Salah satu tempat penampungan yang ada di Gaza adalah sebuah gereja Orthodoks Yunani, Santo Porphyrius.<br />\r\n<br />\r\nGereja ini menampung hampir 1.000 pengungsi Palestina yang mayoritas bergama Islam. Tidak hanya menyediakan tempat tinggal, Gereja Santo Porphyrius turut memberikan makanan, minuman, selimut, tempat duduk, mainan dan bahkan halaman belakang yang biasa digunakan bocah Palestina bermain sepak bola.<br />\r\n<br />\r\n&quot;Kami membuka gereja untuk menolong warga, ini sudah menjadi tugas gereja dan kami akan membantu mereka sekuat tenaga,&quot; sebut salah satu pengurus gereja, Archbishop Alexios, seperti dikutip dari&nbsp;<em>Arab News</em>, Rabu (23/7/2014).<br />\r\n<br />\r\n&quot;Awalnya ada 600 warga dan sekarang sudah ribuan, kebanyakan dari mereka adalah peremupuan, anak-anak dan orang tua yang kondisinya lemah,&quot; tambah dia.<br />\r\n<br />\r\nGereja Santo Porphyrius memang bukan tempat yang paling aman bagi pengungsi Palestina. Pasalnya, tidak lama setelah para pengungsi berdatangan, roket dari Israel menerjang daerah dekat gereja tersebut.<br />\r\n<br />\r\nNamun hal ini dapat menjadi bukti bagaimana agresi Israel tidak meruntuhkan semangat warga Palestina untuk tetap bersatu dan saling membantu tanpa memandang ras, etnis atau agama.<br />\r\n<br />\r\nSekedar informasi, warga Kristen Palestina merupakan penduduk minoritas. Jumlah mereka hanya sekitar 1.400 jiwa.&nbsp;</p>\r\n', '', 'Minggu', '2018-04-22', '11:13:08', 'penduduk_palestina_sembunyi_di_gereja.jpg', 8, 'palestina', 'Y'),
-(662, 39, 'admin', 'Iran Dorong dan dukung Palestina Terus untuk Melawan Israel', '', '', 'iran-dorong-dan-dukung-palestina-terus-untuk-melawan-israel', 'N', 'Y', 'Y', '<p><strong>TEHERAN&nbsp;</strong>- Pemimpin tertinggi Iran, Ayatollah Ali Khamenei menyampaikan pernyataan kontroversial terkait ketegangan di Gaza. Khamenei mendorong agar Palestina terus melawan Israel.<br />\r\n<br />\r\n&quot;Salah satu cara untuk menghentikan rezim kurang ajar ini adalah melanjutkan perlawanan dan dan perjuangan bersenjata harus diperluas ke Tepi Barat,&quot; sebut Khamenei, seperti dikutip dari&nbsp;<em>IRNA,&nbsp;</em>Kamis (24/7/2014).<br />\r\n<br />\r\nKhamenei dikenal sebagai musuh besar Israel. Beberapa komentarnya membuat panas telinga pemimpin Israel.<br />\r\n<br />\r\nKomentar paling pedas Khamenei adalah Iran tidak pernah mengenal Israel. Negara ini juga secara terang-terangan mendukung Hamas. Hamas sendiri sudah dimasukan ke dalam daftar hitam terorisme oleh Israel.<br />\r\n<br />\r\nSelain itu, Khamenei dan beberapa pemimpin Iran berjanji akan menghilangkan Israel dari peta dunia. Bahkan, beberapa pekan lalu, Khamenei menyatakan peristiwa pembantaian warga Yahudi oleh Nazi satu abad lalu, hanyalah sebuah ilusi yang tak nyata.</p>\r\n', 'Iran Dorong Palestina Terus Lawan Israel', 'Minggu', '2018-04-22', '11:12:16', 'menlu_palestina.jpg', 94, 'palestina', 'Y'),
+(662, 39, 'admin', 'Iran Dorong dan dukung Palestina Terus untuk Melawan Israel', '', '', 'iran-dorong-dan-dukung-palestina-terus-untuk-melawan-israel', 'N', 'Y', 'Y', '<p><strong>TEHERAN&nbsp;</strong>- Pemimpin tertinggi Iran, Ayatollah Ali Khamenei menyampaikan pernyataan kontroversial terkait ketegangan di Gaza. Khamenei mendorong agar Palestina terus melawan Israel.<br />\r\n<br />\r\n&quot;Salah satu cara untuk menghentikan rezim kurang ajar ini adalah melanjutkan perlawanan dan dan perjuangan bersenjata harus diperluas ke Tepi Barat,&quot; sebut Khamenei, seperti dikutip dari&nbsp;<em>IRNA,&nbsp;</em>Kamis (24/7/2014).<br />\r\n<br />\r\nKhamenei dikenal sebagai musuh besar Israel. Beberapa komentarnya membuat panas telinga pemimpin Israel.<br />\r\n<br />\r\nKomentar paling pedas Khamenei adalah Iran tidak pernah mengenal Israel. Negara ini juga secara terang-terangan mendukung Hamas. Hamas sendiri sudah dimasukan ke dalam daftar hitam terorisme oleh Israel.<br />\r\n<br />\r\nSelain itu, Khamenei dan beberapa pemimpin Iran berjanji akan menghilangkan Israel dari peta dunia. Bahkan, beberapa pekan lalu, Khamenei menyatakan peristiwa pembantaian warga Yahudi oleh Nazi satu abad lalu, hanyalah sebuah ilusi yang tak nyata.</p>\r\n', 'Iran Dorong Palestina Terus Lawan Israel', 'Minggu', '2018-04-22', '11:12:16', 'menlu_palestina.jpg', 95, 'palestina', 'Y'),
 (664, 23, 'admin', 'Jokowi janji mati-matian akan bela Palestina jika jadi presiden', '', '', 'jokowi-janji-matimatian-akan-bela-palestina-jika-jadi-presiden', 'N', 'Y', 'Y', '<p><strong>Merdeka.com -&nbsp;</strong>Capres&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>&nbsp;kembali menegaskan dukungannya untuk kemerdekaan 100 persen bagi Palestina.&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>&nbsp;berjanji akan mati-matian membela negeri yang dijepit Israel ini.<br />\r\n<br />\r\n&quot;Kita lihat apa yang mereka butuhkan. Mereka butuh tandatangan untuk dukungan ya kita tanda tangan. Mereka butuh diplomasi ya diplomasi. Butuh kedutaan ya kita buka kedutaan,&quot; kata&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>&nbsp;saat bertemu relawan seluruh Jakarta di GOR Yudo, Kelapa Gading, Kamis (26/6).<br />\r\n<br />\r\n&quot;Ini dukungan tanpa reserve,&quot; tegas&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>.<br />\r\n<br />\r\nSebelumnya&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>&nbsp;sudah menyatakan dukungannya pada kemerdekaan Palestina.&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>&nbsp;juga mendukung Palestina menjadi anggota Perserikatan Bangsa-Bangsa (PBB).<br />\r\n<br />\r\n&quot;Saya dan&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/m/muhammad-jusuf-kalla/\">JK</a></strong>&nbsp;mendukung penuh Palestina menjadi negara merdeka dan mendukung penuh Palestina menjadi anggota penuh Dewan Perserikatan Bangsa-Bangsa (PBB),&quot; kata&nbsp;<strong><a href=\"http://profil.merdeka.com/indonesia/j/joko-widodo/\">Jokowi</a></strong>&nbsp;dalam pemaparan visi misi di debat capres di Hotel Holiday Inn, Kemayoran, Jakarta Pusat, Minggu (22/6).</p>\r\n\r\n<p>Bagaimana lontaran-lantaran Gubernur DKI Jakarta ini soal kebebasan Palestina dari tangan Israel. Tentu akan menarik jika kita menyaksikan secara langsung cara diplomasi yang dilakukan tokoh yang dikenal dengan blusukannya ini. Apakah Jokowi akan blusukan juga ke jalur Gaza? Atau hanya diplomasi wacana yang dilakukan para tokoh politik pada umumnya.</p>\r\n\r\n<p><span style=\"color:#c0c0c0\">Sumber :&nbsp;http://www.merdeka.com/peristiwa/jokowi-janji-mati-matian-bela-palestina.html</span></p>\r\n', '', 'Minggu', '2018-04-22', '00:10:47', 'jokowi.jpg', 3, 'nasional', 'Y'),
 (665, 48, 'admin', 'Risma berjanji Akan Tolak Tawaran Jadi Menteri apapun yang terjadi', '', '', 'risma-berjanji-akan-tolak-tawaran-jadi-menteri-apapun-yang-terjadi', 'N', 'Y', 'Y', '<h3>\"Saya tidak ingin. Saya masih punya janji, saya di Surabaya saja.\"</h3>\r\n\r\n<p>Wali Kota Surabaya Tri Rismaharini mengaku tidak tertarik masuk ke dalam kabinet Joko Widodo-Jusuf Kalla. <br />\r\n<br />\r\nRisma mengatakan masih punya janji pada warga Surabaya. Sehingga dia ingin menuntaskan janjinya memimpin Surabaya hingga berakhir.<br />\r\n<br />\r\n\"Tidak, tidak. Saya tidak ingin (masuk kabinet). Saya masih punya janji, saya di Surabaya saja,\" kata Risma, Kamis 24 Juli 2014.<br />\r\n<br />\r\nHingga saat ini pun Risma mengaku belum mendapatkan tawaran apa pun untuk masuk dalam kabinet Jokowi-JK. Menurut Risma, selama bertemu dengan pimpinan partai, tak ada perbincangan soal kabinet.<br />\r\n<br />\r\nNamun dia menegaskan kalaupun ada tawaran, dia tetap akan menuntaskan janjinya pada masyarakat Surabaya. \"Kalau nanti ada yang <em>nawari</em>, ya nanti saja,\" ujarnya.<br />\r\n<br />\r\nDi media sosial Facebook muncul polling nama-nama untuk duduk di kabinet Jokowi-JK. Salah satunya Tri Rismaharini. Wali Kota Surabaya itu ditempatkan sebagai Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi.<br />\r\n<br />\r\nPolling itu diakui Jokowi untuk meminta masukan kepada masyarakat terkait siapa-siapa saja yang tepat untuk mengisi kabinetnya lima tahun ke depan.</p>\r\n\r\n<p>Sumber : http://politik.news.viva.co.id/news/read/524505-jabatan-belum-tuntas--risma-akan-tolak-tawaran-jadi-menteri/</p>\r\n', '', 'Minggu', '2018-04-22', '00:09:45', 'Tri-Rismaharin.jpg', 3, 'nasional', 'Y'),
 (666, 19, 'admin', 'Pentax Q-S1 Kamera Mirorless Style Retro', '', '', 'pentax-qs1-kamera-mirorless-style-retro', 'N', 'Y', 'N', '<p>Q-S1 ini menawarkan ISO sampai 12,800 dengan kecepatan shutter sampai 1/2000 detik , selain itu kamera kompak ini pun menyertakan sensor gyro untuk mengurangi efek getaran atau goyangan. Kamera kompak retro ini pun mampu merekam video FULL HD dengan kecepatan 30fps dan mendukung 8 lensa yang kompatibel dengan Q-mount.</p>\r\n\r\n<p>Ada juga fungsi efek digital filter sebanyak 17 buah untuk menghasilkan efek bokeh, plus ada tambahan 21 mode adegan/scene serta mode 11 custom image. Layar LCDnya berukuran 3 inci beresolusi 460K dengan teknologi anti pantulan dan mendukung 170 derajat sudut pandang.</p>\r\n\r\n<p>Sayangnya kamera ini masih belum mendukung Wi-Fi yang mulai dibutuhkan untuk kemudahan berbagai foto.</p>\r\n\r\n<p>Q-S1 akan tersedia pada awal September 2014 dengan harga sekitar 500 USD untuk body saja dan 637 USD untuk kit dengan lensa 5-15mm.</p>\r\n', '', 'Sabtu', '2018-04-21', '23:53:46', 'cannon.png', 5, 'teknologi', 'Y'),
@@ -233,8 +232,6 @@ INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judu
 (691, 2, 'admin', 'Meski Akui Sudah Sulit Menang, Rossi Belum Mau Menyerah', '', '', 'meski-akui-sudah-sulit-menang-rossi-belum-mau-menyerah', 'N', 'N', 'N', '<p>LESMO &ndash; Pembalap Monster Energy Yamaha, Valentino Rossi, mengakui kalau dirinya sudah mulai kesulitan untuk bisa meraih kemenangan di kelas utama saat ini. Kendati begitu, ia mengaku masih belum mau menyerah dan akan tetap berjuang hingga akhir musim.</p>\r\n\r\n<p>Meski terlihat masih cukup mampu bersaing untuk podium musim ini, kemenangan terakhir Rossi diraihnya pada seri Belanda 2017 lalu. Sejak saat itu, The Doctor &ndash;julukan Rossi&ndash; sudah melewati 37 balapan tanpa kemenangan.</p>\r\n\r\n<p>Catatan ini merupakan losing streak terpanjang kedua yang pernah ia alami dalam kariernya. Sebelumnya, Rossi juga pernah merasakan 44 balapan tanpa kemenangan pada akhir 2010 sampai awal 2013.</p>\r\n', '', 'Senin', '2019-07-15', '10:24:03', 'rossi.png', 4, 'metropolitan,olahraga', 'Y'),
 (692, 2, 'admin', 'Kalahkan Federer, Djokovic Juara Wimbledon', '', '', 'kalahkan-federer-djokovic-juara-wimbledon', 'N', 'N', 'N', '<p>LONDON &ndash; Novak Djokovic meraih gelar juara di ajang Wimbledon 2019 kali ini. Petenis asal Serbia itu keluar sebagai juara usai mengalahkan pesaing terberatnya, Roger Federer pada laga final yang berlangsung Minggu 14 Juli 2019.</p>\r\n\r\n<p>Persaingan ketat tersaji antara Djokovic dan Federed di partai final. Keduanya bahkan harus bermain hingga lebih dari lima jam di laga final kali ini. Kejar-kejaran poin juga terus terjadi di set pertama hingga keduanya berada di skor 6-6. Akan tetapi, Djokovic akhirnya mampu menang di set pertama lewat tie break 7-5.</p>\r\n\r\n<p>Hal serupa juga terjadi di set kedua dan tiga. Seakan tak ingin melakukan kesalahan, kedua pemain begitu berhati-hati dalam melepaskan pukulan. Akan tetapi, Federer yang lebih dominan akhirnya mampu mengatasi perlawanan Djokovic dengan cukup mudah.</p>\r\n', '', 'Senin', '2019-07-15', '10:25:22', 'gambar_6.png', 32, 'internasional,olahraga', 'Y'),
 (693, 36, 'admin', 'Cara Repsol Honda Jaga Kepercayaan Diri Marquez', '', '', 'cara-repsol-honda-jaga-kepercayaan-diri-marquez', 'Y', 'N', 'N', '<p>AALST – Direktur Honda Racing Coorporation (HRC), Tetsuhiro Kuwata, mengatakan kalau timnya selalu berusaha merakit motor terbaik untuk Marc Marquez. Hal itu mereka lakukan guna menjaga kepercayaan diri sang pembalap di lintasan.</p>\r\n\r\n<p>Tetsuhiro mengatakan, memiliki pembalap sekaliber Marquez, membuat timnya selalu berusaha menciptakan mesin terbaik, agar sang pembalap tak lagi terlalu memikirkan untuk meningkatkan performa motor dan hanya fokus untuk meraih hasil terbaik pada setiap balapan .</p>\r\n\r\n<p>“Sudah jadi tugas dan target kami memberi Marc (Marquez) mesin terbaik. Jika kami bisa memberinya motor dengan level tinggi, maka ini jelas akan memberikan kepercayaan diri yang lebih tinggi saat berkendara, hingga ia bisa benar-benar konsentrasi pada balapan. Dengan begitu, ia bisa meraih hasil baik,” ujar Kuwata, melansir dari laman GPOne, Senin (15/7/2019).</p>\r\n', '', 'Senin', '2019-07-15', '10:38:00', 'gambar_marquez.png', 6, 'internasional,olahraga', 'Y');
-INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judul`, `youtube`, `judul_seo`, `headline`, `aktif`, `utama`, `isi_berita`, `keterangan_gambar`, `hari`, `tanggal`, `jam`, `gambar`, `dibaca`, `tag`, `status`) VALUES
-(695, 19, 'admin', 'Project Source Code Company Profile', 'Teknologi Informasi', '', 'project-source-code-company-profile', 'Y', 'Y', 'Y', '<div class=\"container\" align=\"center\">\r\n<h1><span style=\"color: inherit; font-family: inherit; font-size: 2rem; text-align: left;\">BlackRose</span><br></h1>\r\n<hr>\r\n<h3><span style=\"text-align: left;\">Teknologi Informasi</span></h3><h3><span style=\"text-align: left;\"><a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45wz789ZUB8IQWmalgDQ4YCB\" role=\"button\" title=\"Aplikasi Metode dan Algoritma\" alt=\"Aplikasi Metode dan Algoritma\" style=\"font-size: 1rem; font-weight: bold;\">Aplikasi Metode dan Algoritma</a></span><br></h3><br>\r\n<b><a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45yhLkkLk-XxzsaOtxjAcFnc\" role=\"button\" title=\"Aplikasi Metode Sistem Pakar\" alt=\"Aplikasi Metode Sistem Pakar\">Aplikasi Metode Sistem Pakar</a><br></b><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45zaV2N8YJg48WMus9MLmlvo\" role=\"button\" title=\"Aplikasi Metode Data Mining\" alt=\"Aplikasi Metode Data Mining\">Aplikasi Metode Data Mining</a><br><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45w6Hee9C8wjmDWjijVSeBr0\" role=\"button\" title=\"Aplikasi Web Sistem Informasi\" alt=\"Aplikasi Web Sistem Informasi\">Aplikasi Web Sistem Informasi</a><br><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45wEbuAFWtXAeJ90Xxod3zJs\" role=\"button\" title=\"Aplikasi Web Media Informasi\" alt=\"Aplikasi Web Media Informasi\">Aplikasi Web Media Informasi</a><br><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45ymREn7wQX55CDDgKsrVy6g\" role=\"button\" title=\"Aplikasi Web Marketplace &amp; E-Commerce\" alt=\"Aplikasi Web Marketplace &amp; E-Commerce\">Aplikasi Web Marketplace &amp; E-Commerce</a><br><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45x3FH2mMPb8k3Crgp_-0DqU\" role=\"button\" title=\"Aplikasi Web SMM &amp; PPOB KM Panel\" alt=\"Aplikasi Web SMM &amp; PPOB KM Panel\">Aplikasi Web SMM &amp; PPOB KM Panel</a><br><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45zH_4eVbOyijlm6Tl-PE0hf\" role=\"button\" title=\"Aplikasi Web Tool &amp; Lainnya\" alt=\"Aplikasi Web Tool &amp; Lainnya\">Aplikasi Web Tool &amp; Lainnya</a><br><br>\r\n<h3>Daftar panduan pemrograman</h3>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45yVvbjmgDmk5jcFUOLnnjSq\" role=\"button\" title=\"Panduan Database &amp; Pemrograman\" alt=\"Panduan Database &amp; Pemrograman\">Panduan Database &amp; Pemrograman</a><br><br>\r\n<a class=\"btn tombol btn-md lebar\" href=\"https://www.youtube.com/playlist?list=PLVQEkQx_u45xRobD4KP9yAi335yx5ZvQN\" role=\"button\" title=\"Panduan Website, Blog, Hosting &amp; Domain\" alt=\"Panduan Website, Blog, Hosting &amp; Domain\">Panduan Website, Blog, Hosting &amp; Domain</a><br><br>\r\n<h3><br></h3>\r\n</div>', 'Jasa pemrograman web', 'Kamis', '0000-00-00', '00:00:00', 'mycoding.jpg', 0, 'teknologi', 'Y');
 
 -- --------------------------------------------------------
 
@@ -244,8 +241,8 @@ INSERT INTO `berita` (`id_berita`, `id_kategori`, `username`, `judul`, `sub_judu
 
 CREATE TABLE `download` (
   `id_download` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `nama_file` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `nama_file` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL,
   `hits` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
@@ -282,11 +279,11 @@ INSERT INTO `download` (`id_download`, `judul`, `nama_file`, `tgl_posting`, `hit
 CREATE TABLE `gallery` (
   `id_gallery` int(5) NOT NULL,
   `id_album` int(5) NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `jdl_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `gallery_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `keterangan` text COLLATE latin1_general_ci NOT NULL,
-  `gbr_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `username` varchar(50) NOT NULL,
+  `jdl_gallery` varchar(100) NOT NULL,
+  `gallery_seo` varchar(100) NOT NULL,
+  `keterangan` text NOT NULL,
+  `gbr_gallery` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -294,7 +291,7 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id_gallery`, `id_album`, `username`, `jdl_gallery`, `gallery_seo`, `keterangan`, `gbr_gallery`) VALUES
-(280, 56, 'admin', 'about', 'about', '', 'about-plan.jpg');
+(280, 56, 'admin', 'about', 'about', '', 'daks.png');
 
 -- --------------------------------------------------------
 
@@ -310,26 +307,27 @@ CREATE TABLE `halamanstatis` (
   `tgl_posting` date NOT NULL,
   `gambar` varchar(100) NOT NULL,
   `username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `dibaca` int(5) NOT NULL DEFAULT '1',
+  `dibaca` int(5) NOT NULL DEFAULT 1,
   `jam` time NOT NULL,
   `hari` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `halamanstatis`
 --
 
 INSERT INTO `halamanstatis` (`id_halaman`, `judul`, `judul_seo`, `isi_halaman`, `tgl_posting`, `gambar`, `username`, `dibaca`, `jam`, `hari`) VALUES
-(66, 'Great UI & UX', 'great-ui--ux', '<p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>', '2020-09-22', 'feature_3.jpg', 'admin', 3, '02:33:04', 'Selasa'),
-(62, 'Sequi ea ut et est quaerat', 'sequi-ea-ut-et-est-quaerat', '<p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est \r\nquaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. \r\nSimilique ea voluptatem. Esse doloremque accusamus repellendus deleniti \r\nvel. Minus et tempore modi architecto.</p>', '2020-09-22', 'slide_2.jpg', 'admin', 3, '02:17:27', 'Selasa'),
+(66, 'MEMILIKI LEGALITAS', 'memiliki-legalitas', '<p class=\"MsoNormal\">Standar Keahlian dan keamanan yang teruji secara legalitas.<o:p></o:p></p>', '2020-09-22', 'feature_3.jpg', 'admin', 3, '02:33:04', 'Selasa'),
+(62, 'Sequi ea ut et est quaerat', 'sequi-ea-ut-et-est-quaerat', '<p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est \r\nquaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. \r\nSimilique ea voluptatem. Esse doloremque accusamus repellendus deleniti \r\nvel. Minus et tempore modi architecto.</p>', '2020-09-22', 'slide_2.jpg', 'admin', 4, '02:17:27', 'Selasa'),
 (63, 'Lorem Ipsum Dolor', 'lorem-ipsum-dolor', '<p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est \r\nquaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. \r\nSimilique ea voluptatem. Esse doloremque accusamus repellendus deleniti \r\nvel. Minus et tempore modi architecto.</p>', '2020-09-22', 'slide_3.jpg', 'admin', 4, '02:19:43', 'Selasa'),
-(64, 'Clean Design & Well Documented Clean Design & Well Documented', 'clean-design--well-documented-clean-design--well-documented', '<p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\r\n              velit esse cillum dolore eu fugiat nulla pariatur,&nbsp; Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\r\n              velit esse cillum dolore eu fugiat nulla pariatur. Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\r\n              velit esse cillum dolore eu fugiat nulla pariatur</p>', '2020-09-22', 'feature_1.jpg', 'admin', 9, '02:26:57', 'Selasa'),
-(65, 'Ontime Delivery', 'ontime-delivery', '<p>Excepteur sint occaecat cupidatat non proident, sunt in\r\n              culpa qui officia deserunt mollit anim id est laborum</p>', '2020-09-22', 'feature_2.jpg', 'admin', 3, '02:30:30', 'Selasa'),
+(64, 'SOLUSI PERMASALAHAN PAJAK DAN AKUNTANSI', 'solusi-permasalahan-pajak-dan-akuntansi', '<p class=\"MsoNormal\">Melakukan identifikasi akar penyebab masalah dengan\r\nmeng-analisis situasi secara mendalam terkait perpajakan dan akuntansi.<o:p></o:p></p>', '2020-09-22', 'feature_1.jpg', 'admin', 9, '02:26:57', 'Selasa'),
+(65, ' KONSULTAN TERPERCAYA', '-konsultan-terpercaya', '<p class=\"MsoNormal\">Bertanggung jawab dan komitmen terhadap palayanan yang\r\ndiandalkan.<o:p></o:p></p>', '2020-09-22', 'feature_2.jpg', 'admin', 3, '02:30:30', 'Selasa'),
 (52, 'Eum ipsam laborum deleniti velitena', 'eum-ipsam-laborum-deleniti-velitena', 'Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\r\n              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in\r\n              culpa qui officia deserunt mollit anim id est laborum\r\n            ', '2020-09-18', 'about.jpg', 'admin', 25, '14:50:11', 'Jumat'),
-(53, 'Web Development', 'web-development', '<p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>', '2020-09-18', 'service_1.jpg', 'admin', 3, '15:40:58', 'Jumat'),
-(54, 'Mobile Development', 'mobile-development', '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>', '2020-09-18', 'service_2.jpg', 'admin', 9, '15:41:21', 'Jumat'),
-(55, 'Training', 'training', '<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>', '2020-09-18', 'service_3.jpg', 'admin', 6, '15:42:04', 'Jumat'),
-(61, 'Welcome', 'welcome', 'Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est \r\nquaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. \r\nSimilique ea voluptatem. Esse doloremque accusamus repellendus deleniti \r\nvel. Minus et tempore modi architecto.', '2020-09-22', 'slide_1.jpg', 'admin', 3, '02:09:50', 'Selasa');
+(53, 'Jasa Perpajakan', 'jasa-perpajakan', '\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<ul><li style=\"margin-bottom: 0in; line-height: normal;\">Bebas\r\nKonsultasi Permasalahan Perpajakan dan Memberikan informasi Peraturan\r\nPerpajakan Terbaru<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Melakukan\r\nTax Review dan Tax Planning<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Membuat\r\nPembayaran Perpajakan (Ebilling)<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Perhitungan\r\ndan Pelaporan Pajak PPh Pasal 21, 22, 23, PPh Final Pasal 4 ayat 2 dan Pajak\r\nPertambahan Nilai (PPN) bulanan<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Membantu\r\nmenyelesaikan Tanggapan Surat Permintaan Penjelasan Data Keterangan (SP2DK),\r\nSurat Himbauan, Surat Teguran dan Tagihan Pajak<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Membantu\r\npembuatan NPWP, EFIN, permohonan Pengusaha Kena Pajak (PKP), Sertifikat\r\nElektronik dan Pemindahbukuan<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Membantu\r\nMelaporkan SPT Tahunan Orang Pribadi dan Badan Usaha<o:p></o:p></li><li style=\"margin-bottom: 0in; line-height: normal;\">Membantu\r\nmelakukan Restitusi Pajak dan Pendampingan Pemeriksaan<o:p></o:p></li></ul>', '2020-09-18', 'service_1.jpg', 'admin', 7, '15:40:58', 'Jumat'),
+(54, 'Jasa Akuntansi', 'jasa-akuntansi', '', '2020-09-18', 'service_2.jpg', 'admin', 9, '15:41:21', 'Jumat'),
+(55, 'Jasa Manajemen', 'jasa-manajemen', '<p style=\"padding: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; overflow-wrap: break-word;\"><br></p>', '2020-09-18', 'service_3.jpg', 'admin', 8, '15:42:04', 'Jumat'),
+(61, 'KONSULTAN PAJAK BANDUNG', 'konsultan-pajak-bandung', '<div pagelayer-id=\"roq7610\" class=\"p-roq7610 pagelayer-heading\" style=\"transition: 0.5s; position: relative; height: auto; margin-bottom: 15px; font-family: Poppins; width: 650px !important; z-index: 51 !important;\"><div class=\"pagelayer-heading-holder\" style=\"color: rgb(255, 255, 255);\"><h6 style=\"margin-bottom:0in\"><span style=\"color: black; font-family: &quot;Segoe UI&quot;;\">KONSULTAN PAJAK TERPERCAYA, BISA DIANDALKAN, DAN MEMILIKI\r\nLEGALITAS.</span></h6><h6 style=\"margin-bottom:0in\"><span style=\"color: black; font-family: &quot;Segoe UI&quot;;\"><br></span></h6><h6 style=\"margin-bottom:0in\"><span style=\"color: black; font-family: &quot;Segoe UI&quot;;\"> Berpengalaman dalam menanangani berbagai masalah perpajakan,\r\nakuntansi, dan manajemen. Sejak tahun 2016 kami sudah menanangani berbagai\r\nsektor perusahaan dan ratusan lebih Wajib Pajak di Indonesia.</span></h6><h6 style=\"margin-bottom:0in\"><span style=\"color: black; font-family: &quot;Segoe UI&quot;;\"><br></span><span style=\"color:black;\r\nmso-themecolor:text1\"><span style=\"font-family: &quot;Segoe UI&quot;;\">KAMI AKAN MEMBERIKAN SOLUSI TERBAIK BAGI PERUSAHAAN ANDA.<br></span></span><span style=\"color: black; font-size: 1rem; font-family: &quot;Segoe UI&quot;;\">Harga Jasa dan Layanan Sangat Terjangkau, dapat\r\ndisesuaikan dengan Kualifikasi Usaha dan Kebutuhan Anda!</span></h6></div></div>', '2020-09-22', 'slide_1.jpg', 'admin', 5, '02:09:50', 'Selasa'),
+(67, 'PT. DAKSA MULTI SOLUTIONS', 'pt-daksa-multi-solutions', '<div pagelayer-id=\"o2l8796\" class=\"p-o2l8796 pagelayer-text\" style=\"transition: 0.5s; width: 525px; margin-bottom: 15px; font-family: Poppins;\"><div class=\"pagelayer-text-holder\"><h6><p class=\"MsoNormal\" style=\"margin-bottom:0in;line-height:normal\"><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">Daks Consultant adalah perusahaan yang\r\nbergerak di bidang </span><b><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">JASA MANAJEMEN, PERPAJAKAN, AKUNTANSI, PERIZINAN\r\n& IMPLEMENTASI SYSTEM AKUNTANSI.</span></b><o:p></o:p></p><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">\r\n\r\n</span><p class=\"MsoNormal\" style=\"margin-bottom:0in;line-height:normal\"><b><br><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">\r\n</span></b><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">Dengan pengalamannya\r\nbekerja di bidang Perpajakan, Akuntansi dan Manajemen, selama beberapa tahun\r\nmaka Daks Consultant bersedia membantu perusahaan Bapak & Ibu untuk\r\nmemberikan solusi terbaik dan mengedukasi di bidang Perpajakan, Akuntansi dan\r\nManajemen.</span><o:p></o:p></p><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">\r\n\r\n</span><p class=\"MsoNormal\" style=\"margin-bottom:0in;line-height:normal\"><br><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">\r\nDaks Consultant memiliki Sumber daya manuasia (SDM) yang Profesional, Kredibel\r\ndan independen siap memberikan Pelayanan yang baik, serta memberikan\r\nkepercayaan yang penuh kepada semua Masyarakat.</span><o:p></o:p></p><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\">\r\n\r\n</span><p class=\"MsoNormal\" style=\"margin-bottom:0in;line-height:normal\"><o:p><span style=\"font-family: Verdana;\" segoe=\"\" ui\";\"=\"\"> </span></o:p></p></h6><p class=\"MsoNormal\" style=\"margin-bottom:0in\"><span style=\"font-family: \" segoe=\"\" ui\";\"=\"\">\r\n\r\n\r\n\r\n</span></p></div></div>', '2024-12-15', 'Logo_Daksa-removebg-preview-11.png', 'admin', 7, '00:00:05', 'Minggu');
 
 -- --------------------------------------------------------
 
@@ -339,9 +337,9 @@ INSERT INTO `halamanstatis` (`id_halaman`, `judul`, `judul_seo`, `isi_halaman`, 
 
 CREATE TABLE `header` (
   `id_header` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -362,14 +360,14 @@ INSERT INTO `header` (`id_header`, `judul`, `url`, `gambar`, `tgl_posting`) VALU
 
 CREATE TABLE `hubungi` (
   `id_hubungi` int(5) NOT NULL,
-  `nama` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `email` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `subjek` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `pesan` text COLLATE latin1_general_ci NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `subjek` varchar(100) NOT NULL,
+  `pesan` text NOT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
-  `dibaca` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N',
-  `lampiran` varchar(255) COLLATE latin1_general_ci NOT NULL
+  `dibaca` enum('Y','N') NOT NULL DEFAULT 'N',
+  `lampiran` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -390,14 +388,14 @@ CREATE TABLE `identitas` (
   `meta_keyword` varchar(250) NOT NULL,
   `favicon` varchar(50) NOT NULL,
   `maps` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `identitas`
 --
 
 INSERT INTO `identitas` (`id_identitas`, `nama_website`, `email`, `url`, `facebook`, `rekening`, `no_telp`, `meta_deskripsi`, `meta_keyword`, `favicon`, `maps`) VALUES
-(1, 'Company', '', '', '', '987654321', '123456789', '', '', 'favicon11.ico', '');
+(1, 'Daks Consultant', 'daksconsultant@gmail.com', '', '', '987654321', '0877-3998-0722', '', '', 'daks.png', 'https://maps.app.goo.gl/5SD24CNW2n9zKEYR6');
 
 -- --------------------------------------------------------
 
@@ -407,11 +405,11 @@ INSERT INTO `identitas` (`id_identitas`, `nama_website`, `email`, `url`, `facebo
 
 CREATE TABLE `iklanatas` (
   `id_iklanatas` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `source` text COLLATE latin1_general_ci NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `source` text NOT NULL,
+  `gambar` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -430,13 +428,13 @@ INSERT INTO `iklanatas` (`id_iklanatas`, `judul`, `username`, `url`, `source`, `
 
 CREATE TABLE `iklantengah` (
   `id_iklantengah` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `source` text COLLATE latin1_general_ci NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `source` text NOT NULL,
+  `gambar` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL,
-  `posisi` varchar(50) COLLATE latin1_general_ci NOT NULL
+  `posisi` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -468,9 +466,9 @@ INSERT INTO `iklantengah` (`id_iklantengah`, `judul`, `username`, `url`, `source
 
 CREATE TABLE `katajelek` (
   `id_jelek` int(11) NOT NULL,
-  `kata` varchar(60) COLLATE latin1_general_ci DEFAULT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `ganti` varchar(60) COLLATE latin1_general_ci DEFAULT NULL
+  `kata` varchar(60) DEFAULT NULL,
+  `username` varchar(50) NOT NULL,
+  `ganti` varchar(60) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -492,12 +490,12 @@ INSERT INTO `katajelek` (`id_jelek`, `kata`, `username`, `ganti`) VALUES
 
 CREATE TABLE `kategori` (
   `id_kategori` int(5) NOT NULL,
-  `nama_kategori` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `kategori_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
+  `nama_kategori` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `kategori_seo` varchar(100) NOT NULL,
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
   `sidebar` int(10) NOT NULL,
-  `gambar_utama` text COLLATE latin1_general_ci NOT NULL
+  `gambar_utama` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -535,13 +533,13 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `username`, `kategori_se
 CREATE TABLE `komentar` (
   `id_komentar` int(5) NOT NULL,
   `id_berita` int(5) NOT NULL,
-  `nama_komentar` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `isi_komentar` text COLLATE latin1_general_ci NOT NULL,
+  `nama_komentar` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `isi_komentar` text NOT NULL,
   `tgl` date NOT NULL,
   `jam_komentar` time NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
-  `email` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
+  `email` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -558,7 +556,6 @@ INSERT INTO `komentar` (`id_komentar`, `id_berita`, `nama_komentar`, `url`, `isi
 (147, 655, 'Programmer', 'programmer.com', 'Mudah-mudahan  windows  8.2  tampilannya  lebih  keren  lagi  dari  windows  8.1 sebelumnya  yang  kurang  enak  di gunakan.  heheheee   ', '2014-07-22', '08:33:04', 'Y', 'programmer@com'),
 (144, 650, 'Tommy Utama', 'tommy.utama@gmail.com', 'Pengamat  politik  dari  Charta  Politika,  Yunarto  Wijaya  mempertanyakan  dasar  keputusan  SBY  menunjuk  Roy  Suryo  sebagai  Menpora.   ', '2014-07-21', '20:59:16', 'Y', 'tommy.utama@gmail.com'),
 (143, 650, 'Udin Sedunia', 'udin.sedunia@gmail.com', 'Menurut  Yunarto,  Roy  selama  ini  lebih  dikenal  sebagai  pakar  foto  digital  dan  video  serta  dosen  di  sebuah  perguruan  tinggi  negeri.   ', '2014-07-21', '20:57:52', 'Y', 'udin.sedunia@gmail.com'),
-(148, 662, 'Programmer', 'programmer.com', 'pantat negara yahudi yang sangat perlu untuk dihancurkan /  musnahkan  dan  bantai  seluruh  warga israel..!!!   ', '2014-07-24', '09:29:20', 'Y', 'programmer@com'),
 (149, 662, 'Edo Ikfianda', 'edomuhammad90@gmail.com', 'Setelah membentuk Timnas, PSSI versi KLB pimpinan La Nyalla Mahmud Matalitti menunjuk Alfred Riedl sebagai pelatihnya.', '2014-08-09', '17:34:35', 'Y', 'edomuhammad90@gmail.com'),
 (152, 650, 'Dewi Safitriir', 'dewi_safitri@gmail.com', 'Peremimpin  tertinggi  Iran,  Ayatollah  Ali  Khamenei  menyampaikan  pernyataan  kontroversial  terkait  ketegangan  di  Gaza.Israele.   ', '2014-08-17', '17:46:28', 'Y', 'dewi_safitri@gmail.com'),
 (153, 662, 'Programmer', 'test.com', 'Anda penyuka Transformer? Tentu hal yang paling menarik saat menonton film Transformer salah satunya adalah saat adegan transformasi yang begitu keren dari sebuah mobil atau truk menjadi robot yang gagah.\r\n\r\nAnda penyuka Transformer? Tentu hal yang paling menarik saat menonton film Transformer salah satunya adalah saat adegan transformasi yang begitu keren dari sebuah mobil atau truk menjadi robot yang gagah.', '2019-11-14', '06:10:12', 'Y', 'Programmer@com'),
@@ -573,12 +570,12 @@ INSERT INTO `komentar` (`id_komentar`, `id_berita`, `nama_komentar`, `url`, `isi
 CREATE TABLE `komentarvid` (
   `id_komentar` int(5) NOT NULL,
   `id_video` int(5) NOT NULL,
-  `nama_komentar` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `isi_komentar` text COLLATE latin1_general_ci NOT NULL,
+  `nama_komentar` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `isi_komentar` text NOT NULL,
   `tgl` date NOT NULL,
   `jam_komentar` time NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -600,7 +597,7 @@ INSERT INTO `komentarvid` (`id_komentar`, `id_video`, `nama_komentar`, `url`, `i
 
 CREATE TABLE `logo` (
   `id_logo` int(5) NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `gambar` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -608,7 +605,7 @@ CREATE TABLE `logo` (
 --
 
 INSERT INTO `logo` (`id_logo`, `gambar`) VALUES
-(15, 'logo_web.png');
+(15, 'daks1.png');
 
 -- --------------------------------------------------------
 
@@ -618,13 +615,13 @@ INSERT INTO `logo` (`id_logo`, `gambar`) VALUES
 
 CREATE TABLE `menu` (
   `id_menu` int(5) NOT NULL,
-  `id_parent` int(5) NOT NULL DEFAULT '0',
+  `id_parent` int(5) NOT NULL DEFAULT 0,
   `nama_menu` varchar(255) NOT NULL,
   `link` varchar(100) NOT NULL,
   `aktif` enum('Ya','Tidak') NOT NULL DEFAULT 'Ya',
   `position` enum('Top','Bottom') DEFAULT 'Bottom',
   `urutan` int(3) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `menu`
@@ -652,7 +649,7 @@ INSERT INTO `menu` (`id_menu`, `id_parent`, `nama_menu`, `link`, `aktif`, `posit
 (172, 170, 'Ceramah', '#', 'Ya', 'Bottom', 23),
 (173, 170, 'Hikmah', 'https://ok.com', 'Ya', 'Bottom', 24),
 (188, 190, 'About', '#section_about', 'Ya', 'Bottom', 2),
-(189, 190, 'Portfolio', '#section_portfolio', 'Ya', 'Bottom', 5),
+(189, 190, 'Legality', '#section_portfolio', 'Ya', 'Bottom', 5),
 (190, 0, 'Menu Utama', '#', 'Ya', 'Bottom', 1),
 (191, 0, 'Menu Sidebar', '#', 'Ya', 'Bottom', 15),
 (192, 0, 'Menu Footer', '#', 'Ya', 'Bottom', 25),
@@ -680,7 +677,7 @@ CREATE TABLE `modul` (
   `aktif` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'Y',
   `urutan` int(5) NOT NULL,
   `link_seo` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `modul`
@@ -731,14 +728,14 @@ INSERT INTO `modul` (`id_modul`, `nama_modul`, `username`, `link`, `static_conte
 CREATE TABLE `mod_alamat` (
   `id_alamat` int(5) NOT NULL,
   `alamat` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `mod_alamat`
 --
 
 INSERT INTO `mod_alamat` (`id_alamat`, `alamat`) VALUES
-(1, '<p><span style=\"font-weight: bolder;\">Haloo!</span>, Kami berkomitmen memberikan layanan terbaik untuk Anda,&nbsp;menyediakan produk dan layanan terbaik yang Anda butuhkan. Apabila untuk alasan tertentu Anda merasa tidak puas dengan pelayanan kami dapat menyampaikan kritik dan saran.<br><br>Website ini adalah demo dari layanan jasa pembuatan web murah dari 401XD Group Indonesia. Segera konsultasikan pada kami untuk menggunakan jasa pembuatan web murah, agar dapat segera merealisasikan apa yang anda harapkan silahkan hubungi kami via email mycoding@401xd.com &amp; whatsapp 082377823390. Terima kasih<br></p>\r\n');
+(1, '<p><span style=\"font-weight: bolder;\">Haloo!</span>, Kami berkomitmen memberikan layanan terbaik untuk Anda,&nbsp;menyediakan produk dan layanan terbaik yang Anda butuhkan. Apabila untuk alasan tertentu Anda merasa tidak puas dengan pelayanan kami dapat menyampaikan kritik dan saran.<br><br></p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -748,8 +745,8 @@ INSERT INTO `mod_alamat` (`id_alamat`, `alamat`) VALUES
 
 CREATE TABLE `mod_ym` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `ym_icon` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -761,11 +758,11 @@ CREATE TABLE `mod_ym` (
 
 CREATE TABLE `pasangiklan` (
   `id_pasangiklan` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `source` text COLLATE latin1_general_ci NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `source` text NOT NULL,
+  `gambar` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -785,11 +782,11 @@ INSERT INTO `pasangiklan` (`id_pasangiklan`, `judul`, `username`, `url`, `source
 
 CREATE TABLE `playlist` (
   `id_playlist` int(5) NOT NULL,
-  `jdl_playlist` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `playlist_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `gbr_playlist` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
+  `jdl_playlist` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `playlist_seo` varchar(100) NOT NULL,
+  `gbr_playlist` varchar(100) NOT NULL,
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -807,11 +804,11 @@ INSERT INTO `playlist` (`id_playlist`, `jdl_playlist`, `username`, `playlist_seo
 
 CREATE TABLE `poling` (
   `id_poling` int(5) NOT NULL,
-  `pilihan` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `status` varchar(20) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `rating` int(5) NOT NULL DEFAULT '0',
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL
+  `pilihan` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `rating` int(5) NOT NULL DEFAULT 0,
+  `aktif` enum('Y','N') NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -834,10 +831,10 @@ INSERT INTO `poling` (`id_poling`, `pilihan`, `status`, `username`, `rating`, `a
 
 CREATE TABLE `sekilasinfo` (
   `id_sekilas` int(5) NOT NULL,
-  `info` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `info` varchar(100) NOT NULL,
   `tgl_posting` date NOT NULL,
-  `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
+  `gambar` varchar(100) NOT NULL,
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -849,9 +846,9 @@ CREATE TABLE `sekilasinfo` (
 CREATE TABLE `statistik` (
   `ip` varchar(20) NOT NULL DEFAULT '',
   `tanggal` date NOT NULL,
-  `hits` int(10) NOT NULL DEFAULT '1',
+  `hits` int(10) NOT NULL DEFAULT 1,
   `online` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `statistik`
@@ -1321,7 +1318,16 @@ INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
 ('::1', '2021-11-06', 1, '1636185251'),
 ('::1', '2021-11-09', 2, '1636469840'),
 ('::1', '2021-11-10', 1, '1636499785'),
-('::1', '2021-11-11', 1, '1636615400');
+('::1', '2021-11-11', 1, '1636615400'),
+('::1', '2024-12-14', 13, '1734189981'),
+('127.0.0.1', '2024-12-14', 11, '1734195536'),
+('127.0.0.1', '2024-12-15', 4, '1734195673'),
+('::1', '2024-12-15', 3, '1734196501'),
+('::1', '2024-12-16', 116, '1734365841'),
+('::1', '2024-12-17', 17, '1734425209'),
+('::1', '2024-12-23', 4, '1734969541'),
+('::1', '2024-12-24', 7, '1734986137'),
+('::1', '2025-01-29', 5, '1738155901');
 
 -- --------------------------------------------------------
 
@@ -1331,9 +1337,9 @@ INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
 
 CREATE TABLE `tag` (
   `id_tag` int(5) NOT NULL,
-  `nama_tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `tag_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `nama_tag` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `tag_seo` varchar(100) NOT NULL,
   `count` int(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -1366,9 +1372,9 @@ INSERT INTO `tag` (`id_tag`, `nama_tag`, `username`, `tag_seo`, `count`) VALUES
 
 CREATE TABLE `tagvid` (
   `id_tag` int(5) NOT NULL,
-  `nama_tag` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `tag_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `nama_tag` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `tag_seo` varchar(100) NOT NULL,
   `count` int(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -1395,7 +1401,7 @@ CREATE TABLE `tbl_comment` (
   `isi_pesan` text NOT NULL,
   `tanggal_komentar` date NOT NULL,
   `jam_komentar` time NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1406,8 +1412,8 @@ CREATE TABLE `tbl_comment` (
 CREATE TABLE `tbl_nicepage` (
   `id` int(5) NOT NULL,
   `key` varchar(255) DEFAULT NULL,
-  `value` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `value` text DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_nicepage`
@@ -1415,34 +1421,34 @@ CREATE TABLE `tbl_nicepage` (
 
 INSERT INTO `tbl_nicepage` (`id`, `key`, `value`) VALUES
 (14, 'mode', '\"1\"'),
-(17, 'section_about', '{\"judul\":\"About\",\"deskripsi\":\"Sit sint consectetur velit. Quisquam quos quisquam cupiditate. \",\"page\":\"52\",\"max_kata\":\"\",\"label_link\":\"\"}'),
-(18, 'section_services', '{\"judul\":\"Services\",\"deskripsi\":\"Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. \",\"page_1\":\"53\",\"page_2\":\"54\",\"page_3\":\"55\",\"layout\":\"3\",\"max_kata\":\"\",\"url_link\":\"\",\"label_link\":\"\"}'),
+(17, 'section_about', '{\"judul\":\"\",\"deskripsi\":\"\",\"page\":\"67\",\"max_kata\":\"0\",\"label_link\":\"\"}'),
+(18, 'section_services', '{\"judul\":\"Services\",\"deskripsi\":\"Keuntungan yang akan Anda dapatkan, Daks Consultant memiliki keunggulan yang tidak didapatkan dari Jasa lainnya. Memberikan pelayanan terbaik dan sesuai permintaan.\",\"page_1\":\"53\",\"page_2\":\"54\",\"page_3\":\"55\",\"layout\":\"3\",\"max_kata\":\"\",\"url_link\":\"\",\"label_link\":\"\"}'),
 (19, 'section_berita', '{\"judul\":\"Berita Terbaru\",\"deskripsi\":\"Sit sint consectetur velit. Quisquam quos quisquam cupiditate. \",\"kategori\":\"19\",\"jumlah\":\"3\",\"layout\":\"3\",\"label_link\":\"\"}'),
 (20, 'sidebar_aktif', '[\"widget_banner\",\"widget_search\",\"widget_side_menu\",\"widget_berita_kategori\",\"widget_berita_populer\",\"widget_berita_tag\",\"widget_berita_utama\",\"widget_komentar\",\"widget_polling\",\"widget_social\"]'),
 (21, 'sections_aktif', '[\"section_about\",\"section_agenda\",\"section_berita\",\"section_client\",\"section_contact\",\"section_cta\",\"section_faq\",\"section_feature\",\"section_hero\",\"section_pengumuman\",\"section_portfolio\",\"section_services\",\"section_team\",\"section_testimonial\"]'),
-(23, 'sections_order', '[\"section_hero\",\"section_about\",\"section_feature\",\"section_services\",\"section_portfolio\",\"section_testimonial\",\"section_cta\",\"section_client\",\"section_team\",\"section_faq\",\"section_agenda\",\"section_pengumuman\",\"section_berita\",\"section_contact\"]'),
+(23, 'sections_order', '[\"section_hero\",\"section_about\",\"section_services\",\"section_feature\",\"section_portfolio\",\"section_testimonial\",\"section_cta\",\"section_client\",\"section_team\",\"section_faq\",\"section_agenda\",\"section_pengumuman\",\"section_berita\",\"section_contact\"]'),
 (26, 'sidebar_order', '[\"widget_search\",\"widget_banner\",\"widget_social\",\"widget_side_menu\",\"widget_berita_kategori\",\"widget_berita_utama\",\"widget_berita_populer\",\"widget_berita_tag\",\"widget_komentar\",\"widget_polling\"]'),
-(27, 'section_cta', '{\"text\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\",\"url\":\"\",\"label\":\"Join Now\"}'),
-(28, 'section_feature', '{\"judul\":\"Why Us\",\"deskripsi\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\",\"page_1\":\"64\",\"page_2\":\"65\",\"page_3\":\"66\",\"layout\":\"0\",\"max_kata\":\"\",\"url_link\":\"\",\"label_link\":\"\"}'),
-(29, 'section_portfolio', '{\"judul\":\"Portfolio\",\"deskripsi\":\"Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur\",\"jumlah\":\"6\",\"layout\":\"3\",\"label_link\":\"\"}'),
-(30, 'section_client', '{\"judul\":\"Client\",\"deskripsi\":\"Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur\",\"jumlah\":\"8\"}'),
+(27, 'section_cta', '{\"text\":\"Need a solution? \\r\\nkonsultasikan seluruh kebutuhan anda\\r\\nbersama kami.\",\"url\":\"\",\"label\":\"Contact Us\"}'),
+(28, 'section_feature', '{\"judul\":\"Why Us\",\"deskripsi\":\"KENAPA HARUS MEMILIH DAKSTAX?\",\"page_1\":\"64\",\"page_2\":\"65\",\"page_3\":\"66\",\"layout\":\"3\",\"max_kata\":\"\",\"url_link\":\"\",\"label_link\":\"\"}'),
+(29, 'section_portfolio', '{\"judul\":\"Legality\",\"deskripsi\":\"Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur\",\"jumlah\":\"6\",\"layout\":\"3\",\"label_link\":\"\"}'),
+(30, 'section_client', '{\"judul\":\"Client\",\"deskripsi\":\"Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur\",\"jumlah\":\"10\"}'),
 (31, 'section_team', '{\"judul\":\"Team\",\"deskripsi\":\"Our Core Team\",\"person_1\":\"1\",\"person_2\":\"3\",\"person_3\":\"4\",\"person_4\":\"2\",\"layout\":\"4\",\"label_link\":\"\"}'),
 (32, 'section_hero', '{\"page_1\":\"61\",\"caption_1\":\"1\",\"page_2\":\"62\",\"caption_2\":\"1\",\"page_3\":\"63\",\"caption_3\":\"1\",\"label_link\":\"\"}'),
-(33, 'section_contact', '{\"judul\":\"Contact Us\",\"deskripsi\":\"Sit sint consectetur velit. Quisquam quos quisquam cupiditate. \",\"text\":\"<h3><span style=\\\"font-weight: bold;\\\">GET IN TOUCH<\\/span> <\\/h3><p>Apabila untuk alasan tertentu Anda merasa tidak puas dengan pelayanan \\r\\nkami dapat menyampaikan kritik dan saran.<br>\\r\\n<\\/p><p><br>\\r\\n<strong>NICEPAGE INDONESIA<\\/strong><\\/p><p style=\\\"line-height: 1;\\\">Nicepage Awesome Website<\\/p><p style=\\\"line-height: 1;\\\">Jl. Kemerdekaan 45<\\/p>\",\"embeded_code\":\"\"}'),
+(33, 'section_contact', '{\"judul\":\"Contact Us\",\"deskripsi\":\"Sit sint consectetur velit. Quisquam quos quisquam cupiditate. \",\"text\":\"<p><h3><span style=\\\"font-weight: bold;\\\">GET IN TOUCH<\\/span> <\\/h3><p>Apabila untuk alasan tertentu Anda merasa tidak puas dengan pelayanan \\r\\nkami dapat menyampaikan kritik dan saran.<br>\\r\\n<\\/p><p><\\/p><b>Daks Consultant<\\/b><\\/p><p>Jl. Magna Timur No.66, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40296<\\/p>\",\"embeded_code\":\"<iframe src=\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3960.4298488918903!2d107.6870781741934!3d-6.9585140681267825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c3fb4f2b807b%3A0x867ffbecc7c740f3!2sKonsultan%20Pajak%20Bandung%20-%20Daksa%20Consultant!5e0!3m2!1sid!2sid!4v1734188640827!5m2!1sid!2sid\\\" width=\\\"600\\\" height=\\\"450\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" loading=\\\"lazy\\\" referrerpolicy=\\\"no-referrer-when-downgrade\\\"><\\/iframe>\"}'),
 (46, 'setting_sidebar', '[{\"widget_search\":{\"judul\":\"\"}},{\"widget_agenda\":{\"judul\":\"Agenda\",\"jumlah\":\"3\",\"tampilkan_gambar\":\"0\"}},{\"widget_pengumuman\":{\"judul\":\"Pengumuman\",\"jumlah\":\"3\",\"tampilkan_gambar\":\"0\"}},{\"widget_iklan_sidebar\":{\"judul\":\"\",\"iklan_sidebar\":\"2\"}},{\"widget_social\":{\"judul\":\"Temukan juga kami di\",\"teks\":\"Ikuti kami di facebook, twitter, Instagram, Youtube dan dapatkan informasi terbaru dari kami disana.\"}},{\"widget_berita_populer\":{\"judul\":\"Berita Populer\",\"jumlah\":\"4\"}},{\"widget_berita_pilihan\":{\"judul\":\"Berita Utama\",\"group\":\"utama\",\"jumlah\":\"3\"}},{\"widget_berita_kategori\":{\"judul\":\"Kategori\",\"tampilkan_jumlah_berita\":\"1\"}},{\"widget_berita_tag\":{\"judul\":\"Tags\"}},{\"widget_polling\":{\"judul\":\"Jajak Pendapat\"}},{\"widget_komentar\":{\"judul\":\"Komantar Terakhir\",\"jumlah\":\"3\"}}]'),
 (50, 'section_agenda', '{\"judul\":\"Agenda\",\"deskripsi\":\"Agenda Terdekat\",\"jumlah\":\"4\",\"layout\":\"column\",\"label_link\":\"\",\"gambar_halaman\":\"0\"}'),
 (51, 'section_pengumuman', '{\"judul\":\"Pengumuman\",\"deskripsi\":\"Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur \",\"jumlah\":\"3\",\"layout\":\"column\",\"label_link\":\"\",\"gambar_halaman\":\"0\"}'),
 (34, 'section_testimonial', '{\"judul\":\"Testimonial\",\"deskripsi\":\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque\",\"jumlah\":\"6\"}'),
 (35, 'section_faq', '{\"judul\":\"FAQs\",\"deskripsi\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\",\"tanya_1\":\"Apakabar\",\"jawab_1\":\"Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non. \",\"tanya_2\":\"Bisa Dibantu\",\"jawab_2\":\"Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui. \",\"tanya_3\":\"Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci.\",\"jawab_3\":\"Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis \",\"tanya_4\":\" Fringilla phasellus faucibus scelerisque eleifend donec pretium\",\"jawab_4\":\"Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui. \",\"tanya_5\":\"Purus gravida quis blandit turpis cursus in \",\"jawab_5\":\"Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in \"}'),
 (36, 'lokasi_menu', '{\"menu_utama\":\"190\",\"menu_footer\":\"192\"}'),
-(37, 'faq_max', '\"5\"'),
+(37, 'faq_max', '\"3\"'),
 (38, 'feature_max', '\"3\"'),
 (39, 'services_max', '\"3\"'),
 (40, 'slide_max', '\"3\"'),
 (41, 'team_max', '\"4\"'),
 (42, 'header_embeded_code', '\"\"'),
 (43, 'footer_embeded_code', '\"\"'),
-(44, 'tagline', '{\"text\":\"By Programmer\",\"header\":\"1\",\"footer\":\"1\"}'),
+(44, 'tagline', '{\"text\":\"\",\"header\":\"0\",\"footer\":\"0\"}'),
 (45, 'btn_back_to_top', '\"1\"'),
 (47, 'terbaru_max', '\"8\"'),
 (48, 'pilihan_max', '\"5\"'),
@@ -1458,16 +1464,22 @@ CREATE TABLE `tbl_nicepage_client` (
   `id_client` int(5) NOT NULL,
   `nama` varchar(255) DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_nicepage_client`
 --
 
 INSERT INTO `tbl_nicepage_client` (`id_client`, `nama`, `logo`) VALUES
-(2, 'tech logic', 'client_techlogiqu.png'),
-(8, 'Qi Cau', 'client_kicau.png'),
-(9, 'Berckha', 'client_bercka.png');
+(23, 'mid', 'WhatsApp-Image-2024-10-04-at-16_05_09-3.png'),
+(24, 'dmm', 'WhatsApp-Image-2024-10-04-at-16_05_09-4.png'),
+(17, 'gloria', 'gloria.png'),
+(20, 'karunia', 'WhatsApp-Image-2024-10-04-at-16_05_09-5.png'),
+(21, 'gz', 'WhatsApp-Image-2024-10-04-at-16_05_09-12.png'),
+(22, 'ypp', 'WhatsApp-Image-2024-10-04-at-16_05_09.png'),
+(25, 'ang', 'WhatsApp-Image-2024-10-04-at-16_05_09-6.png'),
+(26, 'bt', 'WhatsApp-Image-2024-10-04-at-16_05_09-7.png'),
+(27, 'dcg', 'WhatsApp-Image-2024-10-04-at-16_05_09-8.png');
 
 -- --------------------------------------------------------
 
@@ -1481,10 +1493,10 @@ CREATE TABLE `tbl_nicepage_pengumuman` (
   `judul_seo` varchar(255) DEFAULT NULL,
   `judul` varchar(255) DEFAULT NULL,
   `gambar` varchar(255) DEFAULT NULL,
-  `deskripsi` text,
+  `deskripsi` text DEFAULT NULL,
   `dibaca` int(10) DEFAULT NULL,
   `tanggal` date DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_nicepage_pengumuman`
@@ -1506,10 +1518,10 @@ CREATE TABLE `tbl_nicepage_portfolio` (
   `id_portfolio` int(5) NOT NULL,
   `nama_project` varchar(255) DEFAULT NULL,
   `nama_client` varchar(100) DEFAULT NULL,
-  `url` text,
-  `deskripsi` text,
+  `url` text DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_nicepage_portfolio`
@@ -1535,7 +1547,7 @@ CREATE TABLE `tbl_nicepage_team` (
   `socmed_twitter` varchar(100) DEFAULT NULL,
   `socmed_ig` varchar(100) DEFAULT NULL,
   `socmed_linkedin` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_nicepage_team`
@@ -1558,8 +1570,8 @@ CREATE TABLE `tbl_nicepage_testimoni` (
   `nama` varchar(255) DEFAULT NULL,
   `profesi` varchar(255) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
-  `testimoni` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `testimoni` text DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_nicepage_testimoni`
@@ -1567,7 +1579,7 @@ CREATE TABLE `tbl_nicepage_testimoni` (
 
 INSERT INTO `tbl_nicepage_testimoni` (`id_testimoni`, `nama`, `profesi`, `photo`, `testimoni`) VALUES
 (17, 'Saul Parman', 'Ceo & Founder', 'testimoni_3.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'),
-(19, 'Laura Kheil', 'Desiner', 'testimoni_1.jpg', 'Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus Laudem latine persequeris id sed, ex fabulas delectus quo.'),
+(27, 'UYE', 'GURU', 'Agustasan.png', 'BOB'),
 (21, 'Samuel Sumadi', 'Freelance', 'testimoni_2.jpg', 'Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus Laudem latine persequeris id sed, ex fabulas delectus quo.');
 
 -- --------------------------------------------------------
@@ -1578,11 +1590,11 @@ INSERT INTO `tbl_nicepage_testimoni` (`id_testimoni`, `nama`, `profesi`, `photo`
 
 CREATE TABLE `templates` (
   `id_templates` int(5) NOT NULL,
-  `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `username` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `pembuat` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `folder` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'N'
+  `judul` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `pembuat` varchar(50) NOT NULL,
+  `folder` varchar(50) NOT NULL,
+  `aktif` enum('Y','N') NOT NULL DEFAULT 'N'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -1592,7 +1604,7 @@ CREATE TABLE `templates` (
 INSERT INTO `templates` (`id_templates`, `judul`, `username`, `pembuat`, `folder`, `aktif`) VALUES
 (22, 'Swarakalibata Magazine Template', 'admin', '', 'phpmu-magazine', 'N'),
 (24, 'Swarakalibata Personal Template', 'admin', '', 'phpmu-standar', 'N'),
-(28, 'Company Profile', 'admin', '', 'nicepage', 'Y');
+(28, 'Daks Consultant', 'admin', 'daksconsultant', 'nicepage', 'Y');
 
 -- --------------------------------------------------------
 
@@ -1610,7 +1622,7 @@ CREATE TABLE `users` (
   `level` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'user',
   `blokir` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT 'N',
   `id_session` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
@@ -1630,7 +1642,7 @@ CREATE TABLE `users_modul` (
   `id_umod` int(11) NOT NULL,
   `id_session` varchar(255) NOT NULL,
   `id_modul` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users_modul`
@@ -1683,18 +1695,18 @@ INSERT INTO `users_modul` (`id_umod`, `id_session`, `id_modul`) VALUES
 CREATE TABLE `video` (
   `id_video` int(5) NOT NULL,
   `id_playlist` int(5) NOT NULL,
-  `username` varchar(30) COLLATE latin1_general_ci NOT NULL,
-  `jdl_video` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `video_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `keterangan` text COLLATE latin1_general_ci NOT NULL,
-  `gbr_video` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `video` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `youtube` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `dilihat` int(7) NOT NULL DEFAULT '1',
-  `hari` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `jdl_video` varchar(100) NOT NULL,
+  `video_seo` varchar(100) NOT NULL,
+  `keterangan` text NOT NULL,
+  `gbr_video` varchar(100) NOT NULL,
+  `video` varchar(100) NOT NULL,
+  `youtube` varchar(100) NOT NULL,
+  `dilihat` int(7) NOT NULL DEFAULT 1,
+  `hari` varchar(20) NOT NULL,
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
-  `tagvid` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `tagvid` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
@@ -1958,191 +1970,229 @@ ALTER TABLE `video`
 --
 ALTER TABLE `agenda`
   MODIFY `id_agenda` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
 --
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
   MODIFY `id_album` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
 -- AUTO_INCREMENT for table `background`
 --
 ALTER TABLE `background`
   MODIFY `id_background` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id_banner` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
   MODIFY `id_berita` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=696;
+
 --
 -- AUTO_INCREMENT for table `download`
 --
 ALTER TABLE `download`
   MODIFY `id_download` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
   MODIFY `id_gallery` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
+
 --
 -- AUTO_INCREMENT for table `halamanstatis`
 --
 ALTER TABLE `halamanstatis`
-  MODIFY `id_halaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_halaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
 --
 -- AUTO_INCREMENT for table `header`
 --
 ALTER TABLE `header`
   MODIFY `id_header` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `hubungi`
 --
 ALTER TABLE `hubungi`
   MODIFY `id_hubungi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
 --
 -- AUTO_INCREMENT for table `identitas`
 --
 ALTER TABLE `identitas`
   MODIFY `id_identitas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `iklanatas`
 --
 ALTER TABLE `iklanatas`
   MODIFY `id_iklanatas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
 --
 -- AUTO_INCREMENT for table `iklantengah`
 --
 ALTER TABLE `iklantengah`
   MODIFY `id_iklantengah` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
 --
 -- AUTO_INCREMENT for table `katajelek`
 --
 ALTER TABLE `katajelek`
   MODIFY `id_jelek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
 --
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
   MODIFY `id_komentar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+
 --
 -- AUTO_INCREMENT for table `komentarvid`
 --
 ALTER TABLE `komentarvid`
   MODIFY `id_komentar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+
 --
 -- AUTO_INCREMENT for table `logo`
 --
 ALTER TABLE `logo`
   MODIFY `id_logo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id_menu` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+
 --
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
   MODIFY `id_modul` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
 --
 -- AUTO_INCREMENT for table `mod_alamat`
 --
 ALTER TABLE `mod_alamat`
   MODIFY `id_alamat` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `mod_ym`
 --
 ALTER TABLE `mod_ym`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `pasangiklan`
 --
 ALTER TABLE `pasangiklan`
   MODIFY `id_pasangiklan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `playlist`
 --
 ALTER TABLE `playlist`
   MODIFY `id_playlist` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
 --
 -- AUTO_INCREMENT for table `poling`
 --
 ALTER TABLE `poling`
   MODIFY `id_poling` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
 --
 -- AUTO_INCREMENT for table `sekilasinfo`
 --
 ALTER TABLE `sekilasinfo`
   MODIFY `id_sekilas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
   MODIFY `id_tag` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
 --
 -- AUTO_INCREMENT for table `tagvid`
 --
 ALTER TABLE `tagvid`
   MODIFY `id_tag` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
   MODIFY `id_komentar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `tbl_nicepage`
 --
 ALTER TABLE `tbl_nicepage`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
 --
 -- AUTO_INCREMENT for table `tbl_nicepage_client`
 --
 ALTER TABLE `tbl_nicepage_client`
-  MODIFY `id_client` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_client` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `tbl_nicepage_pengumuman`
 --
 ALTER TABLE `tbl_nicepage_pengumuman`
   MODIFY `id_pengumuman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `tbl_nicepage_portfolio`
 --
 ALTER TABLE `tbl_nicepage_portfolio`
   MODIFY `id_portfolio` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `tbl_nicepage_team`
 --
 ALTER TABLE `tbl_nicepage_team`
   MODIFY `id_team` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `tbl_nicepage_testimoni`
 --
 ALTER TABLE `tbl_nicepage_testimoni`
-  MODIFY `id_testimoni` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_testimoni` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
   MODIFY `id_templates` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
 --
 -- AUTO_INCREMENT for table `users_modul`
 --
 ALTER TABLE `users_modul`
   MODIFY `id_umod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_video` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;COMMIT;
+  MODIFY `id_video` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
