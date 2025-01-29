@@ -1,0 +1,430 @@
+.header .navbar {
+    background-color:#f0f5fa !important;
+ }  
+ .header .navbar  ul.navbar-nav > li > a{
+     color: #000 !important;
+  }  
+ 
+   /*-------------------------------------------------------------------------------------
+    * Form
+    *-----------------------------------------------------------------------------------*/
+    a.btn {
+     color: #000 !important;
+   }
+  a.btn-submit,
+  .form .btn-submit {
+    color: #000;
+    background-color:#f0f5fa;
+    border-color:#f0f5fa;
+  }
+  a.btn-submit:hover,
+  .form .btn-submit:hover {
+    color: #000;  
+    background: #1b1c1e;
+  }
+  
+  
+  /*-----------------------------------------------------------------------------------
+   * video list 
+   *-----------------------------------------------------------------------------------*/  
+  
+  .video-list.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+   
+  .video-list.card a.read-more {
+    background:#f0f5fa;
+    color: #f7f7f7;
+  }
+   
+  .video-list.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+  
+   
+  .video-list.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+  
+  
+  /*-----------------------------------------------------------------------------------
+   * Video  Detail
+   *-----------------------------------------------------------------------------------*/ 
+   
+  .video-detail.card .image-container a {
+    color:#000;
+  }
+  
+  .video-detail.card .card-body  a:hover {
+    color:#f0f5fa;
+  } 
+ 
+  /*-----------------------------------------------------------------------------------
+   * Related video 
+   *-----------------------------------------------------------------------------------*/ 
+   
+  .related-video.card .card-body > ul li a:hover { 
+    color:#f0f5fa;
+    background-color: rgba(0,0,0,.03);  
+  }
+  
+  
+  /*-----------------------------------------------------------------------------------
+   * agenda 
+   *-----------------------------------------------------------------------------------*/ 
+  .agenda.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+   
+  .agenda.card a.read-more {
+    background:#f0f5fa;
+    color: #f7f7f7;
+  }
+   
+  .agenda.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+  
+  .agenda.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+  
+  
+  /*-----------------------------------------------------------------------------------
+   * Grid Card 
+   *-----------------------------------------------------------------------------------*/ 
+  
+  .grid.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+   
+  .grid.card a.read-more {
+    background:#f0f5fa;
+    color: #f7f7f7;
+  }
+   
+  .grid.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+   
+  
+  
+  
+  
+  /*-----------------------------------------------------------------------------------
+   * Blog 
+   *-----------------------------------------------------------------------------------*/ 
+ 
+  .blog.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+   
+  .blog.card a.read-more {
+    background:#f0f5fa;
+    color: #f7f7f7;
+  }
+   
+  .blog.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+  
+  .blog.card .tags a{ 
+    background: #d8d8d8;
+  }
+  
+  
+  
+  
+  /*-----------------------------------------------------------------------------------
+   * Blog Detail
+   *-----------------------------------------------------------------------------------*/ 
+  
+  .blog-detail.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+      
+  
+  .blog-detail.card .tags a{ 
+    background: #d8d8d8;
+  }
+  
+  .blog-detail.card  .post-meta {
+    color: grey;
+  }
+   
+   
+  /*-----------------------------------------------------------------------------------
+   * row Blog 
+   *-----------------------------------------------------------------------------------*/ 
+  .row-blog.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+  
+  .row-blog.card  a.read-more {
+    background:#f0f5fa;
+    color: #f7f7f7; 
+  }
+   
+  .row-blog.card a.read-more:hover {
+    background: #1b1c1e;
+  }
+    
+    
+  
+  /*-----------------------------------------------------------------------------------
+   * Blog list
+   *-----------------------------------------------------------------------------------*/ 
+ 
+  .blog-list.card .card-body  a:hover {
+    color:#f0f5fa;
+  }
+  
+  .blog-list.card  a.read-more {
+    background:#f0f5fa;
+    color: #f7f7f7; 
+  } 
+ 
+  /*------------------------------------------------------------------------------------------
+   * Polling
+   *------------------------------------------------------------------------------------------*/
+  .polling label.bar { 
+    background-color:#f0f5fa;
+    color: #000;
+  }
+  
+  /*------------------------------------------------------------------------------------------
+   * Sidebar 
+   *------------------------------------------------------------------------------------------*/
+   .sidebar .widget.card > ul li a:hover,
+   .sidebar .widget.card .card-body > ul li a:hover{ 
+     color: #f0f5fa; 
+   }
+    
+   .sidebar .widget.widget-tagcloud .tagcloud a:hover{
+     color: #f0f5fa !important; 
+   }
+   
+    
+    
+   .sidebar .widget.widget-comments ul li a:hover {
+     color: #f0f5fa; 
+   }
+     
+   .sidebar .widget.widget-social .social-bar a.social-icon { 
+     border: 1px solid #f0f5fa;
+     color: #f0f5fa; 
+   } 
+    
+   .sidebar .widget.widget-social .social-bar a.social-icon:hover  {
+     background: #f0f5fa; 
+   }
+    
+   
+   .sidebar .widget.posts-widget li.list-post a:hover {
+     color: #f0f5fa; 
+   }
+    
+   .sidebar .widget.widget-contact .contact .data label {
+     color: #f0f5fa;
+   } 
+  
+
+ 
+ 
+  /*------------------------------------------------------------------------------------------------
+   * global readmore
+   *------------------------------------------------------------------------------------------------- */  
+  
+   a.read-more{
+     color:#f0f5fa
+   }
+   
+   a.read-more:hover {
+     text-decoration: none;
+     border-bottom: 1px solid #f0f5fa; 
+   }
+    
+   
+  
+  /*------------------------------------------------------------------------------------------*
+  * footer
+  *------------------------------------------------------------------------------------------*/ 
+  
+  #footer .footer  ul li a:hover,
+  #footer .footer .card-body ul li a:hover{ 
+   color: #f0f5fa;
+   text-decoration: none;
+  }
+  
+  #footer-bottom {
+   background-color: #1a1c1e;
+   color: #000; 
+  } 
+   
+  /*-----------------------------------------------------------------------------------------------
+  * section
+  *-----------------------------------------------------------------------------------------------*/ 
+  .section.odd {
+   background: #000000;
+  }
+  .section.even {
+   background: #e1e6ec;
+  } 
+  
+  
+  .section .card-body .body-container a:hover{
+   color: #f0f5fa; 
+  }
+  
+  .section .card-body .body-container.animate:hover{ 
+   border-bottom: 5px solid #f0f5fa;
+  }
+    
+  
+  #section_cta.section {
+   background-color: #f0f5fa;
+   color: #000;  
+  }  
+  
+  
+  .section #carouselTestimonial ol.carousel-indicators li{ 
+   background-color: #f0f5fa;
+  }
+  
+  
+  #back-to-top { 
+   background: #f0f5fa;
+   color: #000; 
+  }
+  
+  
+  #footer ul.footer-menu li a:hover{
+   color: #f0f5fa;
+  } 
+  
+  #footer .social-bar a.social-icon { 
+   border: 1px solid #f0f5fa;
+   color: #f0f5fa;
+  } 
+  
+  #footer .social-bar a.social-icon:hover  {
+   background: #f0f5fa;
+   color: #000;
+  }
+  
+  .btn-theme {
+   border-radius: 0;
+   color: #000;
+   background-color: #f0f5fa;
+   border-color: #f0f5fa;
+  }
+  .btn-theme:hover {  
+   background: #1b1c1e;
+   border-color: #1b1c1e;
+   color: #000;
+  }
+
+  
+ 
+  /*-----------------------------------------------------------------------------------------------
+  * menu
+  *-----------------------------------------------------------------------------------------------*/ 
+ 
+ .main-menu .current-menu-item, 
+ .main-menu .current-menu-ancestor,  
+ .main-menu .current_menu_ancestor,  
+ .main-menu > ul ul li:hover > a ,
+ .main-menu > ul ul li.menu-item a:hover {
+     background: #e1e6ec; 
+ }
+
+  
+/*-----------------------------------------------------------------------------------------------
+* pagination
+*-----------------------------------------------------------------------------------------------*/  
+.pagination a {     
+  border: 1px solid #f0f5fa;
+  color: #f0f5fa; 
+}
+
+.pagination span.current { 
+  background: #f0f5fa; 
+}
+
+.pagination a:hover { 
+  background: #f0f5fa;
+} 
+
+  
+/*-----------------------------------------------------------------------------------------------
+* social share
+*-----------------------------------------------------------------------------------------------*/  
+.social-share a{
+  color: #f0f5fa;
+}
+
+.social-share a:hover{
+  color: #1b1c1e;
+}
+
+/*-----------------------------------------------------------------------------------------------
+ * comment form
+*-----------------------------------------------------------------------------------------------*/  
+
+.comment-respond .comment-form .btn-comment { 
+  background-color: #f0f5fa;
+  border-color: #f0f5fa;
+}
+
+.comment-respond .comment-form .btn-comment:hover { 
+background: #1b1c1e;
+}
+
+h3.comments a.comment-write:hover {
+  color: #f0f5fa;
+} 
+
+ol.commentlist li a:hover { 
+  color: #f0f5fa;
+} 
+
+.navigation a:hover  { 
+  color: #f0f5fa; 
+  border-bottom: 1px solid #f0f5fa;
+} 
+
+/*--------------------------------------------------------------------------------------------------
+ * Menu responsive
+ *------------------------------------------------------------------------------------------------*/
+ .responsive-menu{ 
+  background: #f0f5fa; 
+}
+    
+
+.responsive-menu .menu-content .sidemenu {
+  background: #f0f5fa; 
+} 
+
+.responsive-menu .menu-top a {
+  color: #f0f5fa;
+  background: #e1e6ec;
+}
+
+
+/*--------------------------------------------------------------------------------------------------
+ * team
+ *------------------------------------------------------------------------------------------------*/
+ .team-socmed a {
+  border: 1px solid #f0f5fa;
+  color: #f0f5fa !important;
+} 
+
+.team-socmed a:hover  {
+  background: #f0f5fa;
+}
+ 
+ 
+.section-slider .carousel-caption a:hover{
+  color: #f0f5fa; 
+}
+ 
