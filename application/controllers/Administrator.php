@@ -30,18 +30,23 @@ class Administrator extends CI_Controller {
             }else{
                 $this->load->helper('captcha');
                 $vals = array(
-                    'img_path'   => './captcha/',
-                    'img_url'    => base_url().'captcha/',
+                    'img_path'      => './captcha/',
+                    'img_url'       => base_url().'captcha/',
+                    'font_path'     => FCPATH . 'system/fonts/texb.ttf', // Ensure font file exists
                     'font_size'     => 17,
-                    'img_width'  => '320',
-                    'img_height' => 33,
-                    'border' => 0, 
+                    'img_width'     => 320,
+                    'img_height'    => 33,
                     'word_length'   => 5,
-                    'expiration' => 7200
+                    'expiration'    => 7200
                 );
-
                 $cap = create_captcha($vals);
-                $data['image'] = $cap['image'];
+
+                if ($cap) {
+                    $data['image'] = $cap['image'];
+                    $this->session->set_userdata('mycaptcha', $cap['word']);
+                } else {
+                    $data['image'] = '<p style="color:red">CAPTCHA not generated. Check permissions.</p>';
+                }
                 $this->session->set_userdata('mycaptcha', $cap['word']);
     			$data['title'] = 'Users &rsaquo; Log In';
     			$this->load->view('administrator/view_login',$data);

@@ -1,6 +1,9 @@
 .header .navbar {
     background-color:#f0f5fa !important;
  }  
+  .main-menu > ul > li.menu-item > a {
+    color: black;
+}
  .header .navbar  ul.navbar-nav > li > a{
      color: #000 !important;
   }  

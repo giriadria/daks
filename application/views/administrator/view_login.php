@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>USERS</b> Login</a>
+    <a href="#"><b>USERS</b> Logijhghgn <?php echo $data?></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-        <?php echo $image; ?>
+        <?php echo $image; echo $data;?>
         </div>
         <div class="input-group mb-3">
         <input type="text" class="form-control" name='security_code' placeholder="Security Code" required>
@@ -72,11 +72,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url(); ?>/asset/admin_mu/plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin_mu/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?php echo base_url(); ?>/asset/admin_mu/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin_mu/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?php echo base_url(); ?>/asset/admin_mu/dist/js/adminlte.min.js"></script>
+<script src="<?php echo base_url(); ?>asset/admin_mu/dist/js/adminlte.min.js"></script>
 
 <div class="modal fade" id="lupapass">
   <div class="modal-dialog">
