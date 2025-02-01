@@ -54,7 +54,7 @@ $get_portfolio = $this->db->query("
                     ?>
                     <?php foreach($get_portfolio as $item) {?>
                     <div class="mb-4 col-md-6 col-lg-<?php echo $layout;?>">
-                        <div class="body-container animate shadow h-100"> 
+                        <div class="body-container animate shadow h-100 card-image"> 
                             <?php 
                             if ($item['image'] !==''){
                                 $img_src =base_url().'asset/img_nicepage/portfolio/'.$item['image'];

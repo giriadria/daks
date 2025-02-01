@@ -69,8 +69,8 @@ if(!empty($get_halaman_id)) {
                         }
                     ?>
                     <?php foreach($get_halaman as $hal) {?>
-                    <div class="mb-4 col-md-6 col-lg-<?php echo $layout;?>">
-                        <div class="body-container animate shadow h-100"> 
+                    <div class="mb-4 col-md-6 col-lg-<?php echo $layout;?> ">
+                        <div class="body-container animate shadow h-100 card-image"> 
                             <img src="<?php echo base_url();?>asset/foto_statis/<?php echo $hal['gambar'];?>" alt="<?php echo $hal['judul'];?>">   
                             <a href="<?php echo base_url('halaman/detail/'.$hal['judul_seo']);?>" >
                                 <h4 class="body-title center">

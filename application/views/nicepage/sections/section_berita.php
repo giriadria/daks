@@ -65,7 +65,7 @@ if(!empty($section_berita['jumlah'])) {
                     ?>
                     <?php foreach($get_berita as $berita) {?>
                     <div class="mb-4 col-md-6 col-lg-<?php echo $layout;?>">
-                        <div class="body-container animate shadow h-100"> 
+                        <div class="body-container animate shadow h-100 card-image"> 
                             <?php
                             $img_src= base_url().'asset/foto_berita/small_no-image.jpg';
                             if ($berita['gambar'] !==''){

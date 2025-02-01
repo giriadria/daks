@@ -4,6 +4,12 @@
   .main-menu > ul > li.menu-item > a {
     color: black;
 }
+
+.card-image {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
  .header .navbar  ul.navbar-nav > li > a{
      color: #000 !important;
   }  
@@ -268,7 +274,8 @@
   * section
   *-----------------------------------------------------------------------------------------------*/ 
   .section.odd {
-   background: #000000;
+   background: #492726;
+   color: white !important;
   }
   .section.even {
    background: #e1e6ec;
@@ -316,7 +323,7 @@
   }
   
   .btn-theme {
-   border-radius: 0;
+   border-radius: 20px!important;
    color: #000;
    background-color: #f0f5fa;
    border-color: #f0f5fa;
