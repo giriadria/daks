@@ -282,8 +282,8 @@
   } 
   
   
-  .section .card-body .body-container a:hover{
-   color: #f0f5fa; 
+  .section .card-body .body-container {
+   color: black!important; 
   }
   
   .section .card-body .body-container.animate:hover{ 
@@ -426,11 +426,11 @@ ol.commentlist li a:hover {
  *------------------------------------------------------------------------------------------------*/
  .team-socmed a {
   border: 1px solid #f0f5fa;
-  color: #f0f5fa !important;
+  color: #687586 !important;
 } 
 
 .team-socmed a:hover  {
-  background: #f0f5fa;
+  background: #687586;
 }
  
  
