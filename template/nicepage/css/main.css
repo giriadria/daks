@@ -6,7 +6,17 @@
 @import 'pagination.css';
 @import 'comment.css';
 
+@font-face {
+    font-family: 'tahoma';
+    src: 
+         url('../../../asset/Tahoma.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
+body {
+    font-family: "tahoma"!important;
+}
 
 @media (min-width:993px){  
     body {    
