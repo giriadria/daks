@@ -5,6 +5,15 @@
     color: black;
 }
 
+.main-menu > ul > li.menu-item > a:hover {
+    color: #ECA71E;
+}
+
+.btn-read-more:hover  {
+  background: #492726!important;
+  color: #ECA71E!important;
+}
+
 .card-image {
   border-radius: 20px;
   overflow: hidden;
@@ -346,6 +355,7 @@
  .main-menu > ul ul li:hover > a ,
  .main-menu > ul ul li.menu-item a:hover {
      background: #e1e6ec; 
+     color: #ECA71E;
  }
 
   
@@ -413,11 +423,21 @@ ol.commentlist li a:hover {
 
 .responsive-menu .menu-content .sidemenu {
   background: #f0f5fa; 
+  color: black!important;
 } 
 
 .responsive-menu .menu-top a {
-  color: #f0f5fa;
+  color: black;
   background: #e1e6ec;
+}
+
+ .responsive-menu .menu-content ul.sidemenu li a {
+  color: black;
+  font-weight: bold;
+}
+
+.responsive-menu .menu-content ul.sidemenu ul.sub-menu li a {
+color:rgb(62, 61, 57);
 }
 
 
