@@ -120,7 +120,7 @@ if(!empty($get_halaman_id)) {
                         <?php //ditampilkan saat layar smartphone ?>
                         <?php $class_is_grid_variant = ($grid_variant == true) ? 'd-block d-md-none' : '';?>
                         <div class="mb-4 col-md-<?php echo $layout;?> <?php echo $class_is_grid_variant;?>">
-                            <div class="body-container animate shadow h-100"> 
+                            <div class="body-container animate shadow h-100 card-image"> 
                                 <img src="<?php echo base_url();?>asset/foto_statis/<?php echo $hal['gambar'];?>" alt="<?php echo $hal['judul'];?>">    
                                 <a href="<?php echo base_url('halaman/detail/'.$hal['judul_seo']);?>" >                                        
                                     <h4 class="body-title center">

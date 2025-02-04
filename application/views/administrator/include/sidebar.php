@@ -1,3 +1,11 @@
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?= base_url('assets/adminlte/js/bootstrap.bundle.min.js'); ?>"></script>
+<!-- AdminLTE -->
+<script src="<?= base_url('assets/adminlte/js/adminlte.min.js'); ?>"></script>
+<!-- Your ControlSidebar Script -->
+<script src="<?= base_url('assets/js/ControlSidebar.js'); ?>"></script>
 <!-- Brand Logo -->
 <a href="<?php echo base_url().$this->uri->segment(1); ?>" class="brand-link navbar-light">
       <img src="<?php echo base_url(); ?>/asset/logo/admin.png" alt="Admin Logo" class="brand-image img-circle elevation-3"

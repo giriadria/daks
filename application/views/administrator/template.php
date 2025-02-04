@@ -29,7 +29,7 @@ if ($this->session->level==''){
   <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin_mu/plugins/daterangepicker/daterangepicker-bs3.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>asset/admin_mu/plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
   <script type="text/javascript" src="<?php echo base_url(); ?>asset/admin_mu/plugins/daterangepicker/moment.min.js"></script>
-  <script src="<?php echo base_url(); ?>/asset/admin_mu/plugins/jQuery/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>asset/admin_mu/plugins/jQuery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">

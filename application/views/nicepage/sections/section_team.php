@@ -76,7 +76,7 @@ if(!empty($get_personal_id)) {
                     ?>
                     <?php foreach($get_personal as $person) {?>
                     <div class="mb-4 col-md-6 col-lg-<?php echo $layout;?>">
-                        <div class="body-container animate shadow h-100"> 
+                        <div class="body-container animate shadow h-100 card-image"> 
                             <img src="<?php echo base_url();?>asset/img_nicepage/team/<?php echo $person['photo'];?>" alt="<?php echo $person['nama'];?>">                                            
                             <h4 class="body-title center">
                                 <?php echo $person['nama'];?>

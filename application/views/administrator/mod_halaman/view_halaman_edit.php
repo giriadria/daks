@@ -1,3 +1,28 @@
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 300,
+            fontNames: ['Arial', 'Courier New', 'BeVietnamPro'],
+            fontNamesIgnoreCheck: ['BeVietnamPro'], // Force Summernote to recognize custom font
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onInit: function() {
+                    $('.note-editable').css('font-family', 'BeVietnamPro, sans-serif');
+                }
+            }
+        });
+
+        // Apply custom font manually if Summernote ignores it
+        $('.note-editable').css('font-family', 'BeVietnamPro, sans-serif !important');
+    });
+</script>
 <?php 
     echo "
               <div class='card card-info'>

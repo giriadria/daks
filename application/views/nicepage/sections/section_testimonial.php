@@ -42,7 +42,7 @@ if(!empty($section_testimonial['jumlah'])) {
                             <div class="carousel-testimoni-inner" role="listbox">
                                 <?php foreach($get_testimoni as $i => $testi) {?>
                             
-                                <div class="carousel-item <?php echo ($i == 0 ? 'active': '');?>">
+                                <div data-interval="3000" class="carousel-item <?php echo ($i == 0 ? 'active': '');?>">
                                     <div class="photo-testimoni">
                                         <img src="<?php echo base_url();?>asset/img_nicepage/testimoni/<?php echo $testi['photo'];?>" alt="<?php echo $testi['nama'];?>">
                                     </div>                                    
@@ -55,8 +55,6 @@ if(!empty($section_testimonial['jumlah'])) {
                                             <i class="fa fa-quote-right quote-right" aria-hidden="true"></i> 
                                         </div>
                                     </div>
-                                 </div> 
-                                         
                                 <?php }?>   
                             </div> 
                             <ol class="carousel-indicators">

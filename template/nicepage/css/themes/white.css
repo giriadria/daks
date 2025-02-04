@@ -1,6 +1,24 @@
 .header .navbar {
     background-color:#f0f5fa !important;
  }  
+  .main-menu > ul > li.menu-item > a {
+    color: black;
+}
+
+.main-menu > ul > li.menu-item > a:hover {
+    color: #ECA71E;
+}
+
+.btn-read-more:hover  {
+  background: #492726!important;
+  color: #ECA71E!important;
+}
+
+.card-image {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
  .header .navbar  ul.navbar-nav > li > a{
      color: #000 !important;
   }  
@@ -265,15 +283,16 @@
   * section
   *-----------------------------------------------------------------------------------------------*/ 
   .section.odd {
-   background: #000000;
+   background: #492726;
+   color: white !important;
   }
   .section.even {
    background: #e1e6ec;
   } 
   
   
-  .section .card-body .body-container a:hover{
-   color: #f0f5fa; 
+  .section .card-body .body-container {
+   color: black!important; 
   }
   
   .section .card-body .body-container.animate:hover{ 
@@ -313,7 +332,7 @@
   }
   
   .btn-theme {
-   border-radius: 0;
+   border-radius: 20px!important;
    color: #000;
    background-color: #f0f5fa;
    border-color: #f0f5fa;
@@ -336,6 +355,7 @@
  .main-menu > ul ul li:hover > a ,
  .main-menu > ul ul li.menu-item a:hover {
      background: #e1e6ec; 
+     color: #ECA71E;
  }
 
   
@@ -403,11 +423,21 @@ ol.commentlist li a:hover {
 
 .responsive-menu .menu-content .sidemenu {
   background: #f0f5fa; 
+  color: black!important;
 } 
 
 .responsive-menu .menu-top a {
-  color: #f0f5fa;
+  color: black;
   background: #e1e6ec;
+}
+
+ .responsive-menu .menu-content ul.sidemenu li a {
+  color: black;
+  font-weight: bold;
+}
+
+.responsive-menu .menu-content ul.sidemenu ul.sub-menu li a {
+color:rgb(62, 61, 57);
 }
 
 
@@ -416,11 +446,11 @@ ol.commentlist li a:hover {
  *------------------------------------------------------------------------------------------------*/
  .team-socmed a {
   border: 1px solid #f0f5fa;
-  color: #f0f5fa !important;
+  color: #687586 !important;
 } 
 
 .team-socmed a:hover  {
-  background: #f0f5fa;
+  background: #687586;
 }
  
  

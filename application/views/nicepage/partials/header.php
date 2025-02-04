@@ -91,7 +91,7 @@ function build_nav_menu($menu_parent_id = 0 ,$state_menu_id, $class_menu ='menu-
 	return $list_menu;
 }
 ?> 
-<nav class="main-menu-container navbar navbar-dark fixed-top  py-2 py-lg-3">
+<nav class="main-menu-container navbar navbar-light fixed-top  py-2 py-lg-3">
 	<div class="button-toggle-container d-lg-none m-2 position-absolute">
 		<button class="btn-responsive navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu"
 			aria-expanded="false" aria-label="Toggle navigation">
