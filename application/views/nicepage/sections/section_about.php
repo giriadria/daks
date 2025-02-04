@@ -43,10 +43,10 @@ if(!empty($get_halaman_id)) {
             <div class="row justify-content-center">
                 <?php if( !empty($get_halaman)) {?> 
                     <?php foreach($get_halaman as $hal) {?>
-                    <div class="col-lg-15">
+                    <div class="col-lg-14">
                         <div class="body-container shadow card-image">
                             <div class="row">
-                                <div class="col-lg-6 valign">
+                                <div class="col-lg-4 valign">
                                     <img src="<?php echo base_url();?>asset/foto_statis/<?php echo $hal['gambar'];?>" alt="<?php echo $hal['judul'];?>">
                                 </div>
                                 <div class="col-lg-6 valign">
