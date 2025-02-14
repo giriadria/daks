@@ -43,10 +43,10 @@ if(!empty($get_halaman_id)) {
             <div class="row justify-content-center">
                 <?php if( !empty($get_halaman)) {?> 
                     <?php foreach($get_halaman as $hal) {?>
-                    <div class="col-lg-15">
+                    <div class="col-lg-12">
                         <div class="body-container shadow card-image">
                             <div class="row">
-                                <div class="col-lg-6 valign">
+                                <div class="col-lg-5 valign">
                                     <img src="<?php echo base_url();?>asset/foto_statis/<?php echo $hal['gambar'];?>" alt="<?php echo $hal['judul'];?>">
                                 </div>
                                 <div class="col-lg-6 valign">
@@ -54,11 +54,11 @@ if(!empty($get_halaman_id)) {
                                         <h2 class="body-title  pr-4"> 
                                         </h2>
                                     </a>
-                                    <div class="body-content pr-4"> 
+                                    <div class="body-content pr-3"> 
                                     <?php $limit_word =  (empty(trim($section_feature['max_kata']))  ? 150 : (int) $section_about['max_kata']);?>
                                         <?php echo word_limiter($hal['isi'],$limit_word);?> 
                                     </div>
-                                    <div class="body-action pr-4">
+                                    <div class="body-action pr-3">
                                         <a href="<?php echo base_url('halaman/detail/'.$hal['judul_seo']);?>" class="btn btn-theme btn-read-more">                                    
                                             <?php echo (empty(trim($section_about['label_link'])) ? 'Selengkapnya' : $section_about['label_link']);?>
                                         </a>
