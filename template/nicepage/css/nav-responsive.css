@@ -52,14 +52,14 @@ body.responsive-menu-hide > .responsive-menu {
 .responsive-menu .menu-content .sidemenu {
     background: #343a40;
     border: 0;
-    color: #f7f7f7;
+    color: #ffee00;
     border-radius: 0;
 }
 
 
 .responsive-menu .menu-content .menu-header{ 
     font-size: 16px;
-    color: #f7f7f7;
+    color: #ffee00;
     text-align: center;    
     border-bottom: 1px solid #ffffff1a;
     padding: 20px;
@@ -79,7 +79,7 @@ body.responsive-menu-hide > .responsive-menu {
  
 .responsive-menu .menu-content ul.sidemenu ul.sub-menu li a,
 .responsive-menu .menu-content ul.sidemenu li a {
-    color: #f7f7f7;
+    color: #ffee00;
     display: block;
     padding: 10px;   
 }

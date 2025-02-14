@@ -63,23 +63,7 @@ $base_path = FCPATH;
 		<div class="container">
 			<div class="row">			
 				<div class="col-md-12 text-center"> 
-					<?php					
-						if ( $logo_website['gambar'] !== '' &&  file_exists( $base_path ."asset/logo/".$logo_website['gambar'] ) ){
-							$img_src = base_url() ."asset/logo/".$logo_website['gambar'] ;
-							?>
-								<div class="logo-footer">
-									<img  src="<?php echo $img_src ;?>" alt="<?php echo $id_website['nama_website']; ?>">
-								</div>
-
-							<?php
-						} else {
-							?>
-							<h3 class="logo-text">
-								<?php echo $id_website['nama_website']; ?>
-							</h3>
-							<?php
-						}
-					?>
+					
 
 					<?php 
 					if( isset($tagline['footer']) && isset($tagline['text'])) {

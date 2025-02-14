@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>USERS</b> Logijhghgn <?php echo $data?></a>
+    <a href="#"><b>USERS</b> Login <?php echo $data?></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
